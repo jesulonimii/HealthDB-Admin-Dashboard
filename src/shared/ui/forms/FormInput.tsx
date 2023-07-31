@@ -14,11 +14,11 @@ type FormInputProps = React.ComponentProps<"input"> & {
 const FormInput = (props: FormInputProps) => {
 	const {className = "", startIcon, endIcon, iconClick, label, register, description, ...rest} = props;
 
-	const textFieldClass = `bg-gray-600 text-black dark:text-gray-400 my-2 dark:autofill:bg-gray-900 autofill:bg-gray-500 p-4 ${
+	const textFieldClass = `bg-bg-main text-black dark:text-gray-400 my-2 dark:autofill:bg-gray-900 autofill:bg-gray-500 p-3 ${
 		startIcon && "pl-12"
 	} ${
 		endIcon && "pr-12"
-	} outline-0 focus:ring-2 border border-gray-400 dark:border-0 ring-primary transition-200 font-poppins bg-opacity-20 rounded-lg w-full`;
+	} outline-0 focus:ring-2 border border-gray-200 dark:border-0 ring-primary transition-200 font-poppins bg-opacity-20 rounded-lg w-full`;
 
 
 

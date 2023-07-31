@@ -1,6 +1,6 @@
 import React from "react";
 import CardLayout from "@ui/CardLayout.tsx";
-import {Bag, Buy, Folder, Graph, TwoUsers} from "react-iconly";
+import {Bag, Graph, TwoUsers} from "react-iconly";
 import {COLORS} from "@utils";
 import DropdownMenu from "@ui/DropdownMenu.tsx";
 
@@ -11,14 +11,12 @@ import ProductsMetricCard from "@src/(dashboard)/home/views/ProductsMetricCard.t
 import CartsMetricCard from "@src/(dashboard)/home/views/CartsMetricCard.tsx";
 
 const Home = () => {
-
 	const period_filter = [
 		{name: "This Week", value: "1", icon: ""},
 		{name: "Last Week", value: "2", icon: ""},
 		{name: "This Month", value: "3", icon: ""},
 		{name: "This Year", value: "4", icon: ""},
 	];
-
 
 	return (
 		<div className="flex w-full p-8 md:p-4 h-full pb-12 min-h-[100vh] flex-col gap-6">
@@ -31,7 +29,11 @@ const Home = () => {
 								<Graph primaryColor={COLORS.primary} />
 							</div>
 
-							<DropdownMenu className="bg-transparent text-gray-500" items={period_filter} currentItem={period_filter[0].name} />
+							<DropdownMenu
+								className="bg-transparent text-gray-500"
+								items={period_filter}
+								currentItem={period_filter[0].name}
+							/>
 						</div>
 
 						<div className="flex gap-12">
@@ -56,7 +58,11 @@ const Home = () => {
 								<TwoUsers primaryColor="#1C1D22" />
 							</div>
 
-							<DropdownMenu className="bg-transparent text-gray-500" items={period_filter} currentItem={period_filter[0].name}  />
+							<DropdownMenu
+								className="bg-transparent text-gray-500"
+								items={period_filter}
+								currentItem={period_filter[0].name}
+							/>
 						</div>
 
 						<div className="flex gap-12">
@@ -86,7 +92,11 @@ const Home = () => {
 								<Bag primaryColor="#1C1D22" />
 							</div>
 
-							<DropdownMenu className="bg-transparent text-gray-500" items={period_filter} currentItem={period_filter[0].name} />
+							<DropdownMenu
+								className="bg-transparent text-gray-500"
+								items={period_filter}
+								currentItem={period_filter[0].name}
+							/>
 						</div>
 
 						<div className="flex gap-12">
@@ -119,18 +129,18 @@ const Home = () => {
 			<section className="w-full gap-6 flex flex-col md:flex-row h-[80%] ">
 				<div className="w-full md:w-[60%] flex flex-col gap-6">
 					<div className="w-full flex flex-col md:flex-row gap-4 h-[45%]">
-						<MarketingCard/>
+						<MarketingCard />
 						<div className="w-full md:w-[50%] h-full flex gap-4 flex-col">
-							<ProductsMetricCard/>
-							<CartsMetricCard/>
+							<ProductsMetricCard />
+							<CartsMetricCard />
 						</div>
 					</div>
 
-					<SummaryCard/>
+					<SummaryCard />
 				</div>
 
 				<div className="w-full md:w-[40%] flex">
-					<RecentOrdersCard/>
+					<RecentOrdersCard />
 				</div>
 			</section>
 		</div>

@@ -3,11 +3,19 @@ import {twMerge} from "tailwind-merge";
 import LogoutConfirmModal from "./views/LogoutConfirmModal";
 import Logo from "@shared/ui/Logo";
 import {useState} from "react";
-import {Bag, Category, Chat, ChevronRight, Folder, Iconly, Logout, Setting, TwoUsers} from "react-iconly";
+import {ChevronLeft, ChevronRight, Iconly, Logout} from "react-iconly";
 import {COLORS} from "@utils";
 import {Gift, Headphones} from "@assets/icons";
 
-const SidebarLayout = ({className = ""}) => {
+type sidebarProps = {
+	className : string,
+	minimizeSidebar : boolean,
+	setMinimizeSidebar: any,
+	onHover? : any,
+	onHoverLeave : any
+}
+
+const SidebarLayout = ({className = "", minimizeSidebar, setMinimizeSidebar, onHover, onHoverLeave}) => {
 	const pathname = useLocation().pathname;
 
 	const [showHomeMenu, setShowHomeMenu] = useState(false);
@@ -52,44 +60,63 @@ const SidebarLayout = ({className = ""}) => {
 	];
 
 	return (
-		<div
-			className={twMerge(
+		<div className={twMerge(
 				`bg-bg-main w-[296px]  z-[5000] hidden h-screen flex-col justify-between px-10 py-8 md:flex ${className}`
 			)}>
-			<Link to="/">
-				<Logo className="w-36" />
-			</Link>
+			<div className={`flex items-center justify-between gap-2 ${minimizeSidebar ? "flex-col" : "flex-row"}`}>
+				<Link to="/" className="flex items-center gap-1 w-fit">
+					<Logo />
+					<p
+						className={`font-poppins font-bold text-3xl text-[#45464E] ${
+							minimizeSidebar ? "hidden" : "flex"
+						}`}>
+						Metrix
+					</p>
+				</Link>
 
-			<div className="h-fit mt-">
+				<span
+					onClick={() => setMinimizeSidebar(!minimizeSidebar)}
+					className="bg-accent-primary w-10 h-10 p-2 cursor-pointer rounded-2xl flex items-center justify-center">
+					{minimizeSidebar ? <ChevronRight /> : <ChevronLeft />}
+				</span>
+			</div>
+
+			<div className="h-fit ">
 				{links.map((link, index) => (
 					<div key={index} className="my-3">
 						<Link to={link.link}>
 							<div
 								className={twMerge(
-									`group flex w-full items-center rounded-2xl p-4 px-6 transition duration-500 hover:bg-black hover:bg-opacity-20 ${
+									`group flex ${
+										minimizeSidebar ? "w-fit" : "w-full px-6"
+									} gap-4 justify-center items-center rounded-2xl p-4 transition duration-500 hover:bg-black hover:bg-opacity-20 ${
 										link.link === pathname &&
 										"bg-primary text-white hover:bg-primary-dark hover:bg-opacity-100"
 									}`
 								)}>
-								<span
-									className={`mr-4 w-8 transition duration-500  ${
-										link.link === pathname && "fill-white"
-									}`}>
-									<Iconly name={link.icon} set={link.link === pathname ? "bulk" : "light"} primaryColor={link.link === pathname ? "#fff" : COLORS.icon.dark} />
+								<span className={`w-8 transition duration-500`}>
+									<Iconly
+										name={link.icon}
+										set={link.link === pathname ? "bulk" : "light"}
+										primaryColor={link.link === pathname ? "#fff" : COLORS.icon.dark}
+									/>
 								</span>
-								<p
-									className={twMerge(
-										`w-full items-center capitalize ${
-											link.link === pathname ? "text-white" : "text-gray-500"
-										}`
-									)}>
-									{link.name}
-								</p>
-								{link.badge > 0 && (
-									<span className="rounded-full w-7 h-7 text-sm items-center justify-center flex aspect-square p-2 bg-secondary">
-										{link.badge}
-									</span>
-								)}
+
+								<div className={`${minimizeSidebar ? "hidden" : "flex"} justify-between w-full`}>
+									<p
+										className={twMerge(
+											`w-full items-center capitalize ${
+												link.link === pathname ? "text-white" : "text-gray-500"
+											}`
+										)}>
+										{link.name}
+									</p>
+									{link.badge > 0 && (
+										<span className="rounded-full w-8 h-8 p-1 text-sm items-center justify-center flex aspect-square bg-secondary text-black">
+											{link.badge}
+										</span>
+									)}
+								</div>
 							</div>
 						</Link>
 					</div>
@@ -97,25 +124,27 @@ const SidebarLayout = ({className = ""}) => {
 			</div>
 
 			<div className="flex flex-col gap-6">
-				<div className="rounded-2xl cursor-pointer items-center p-4 bg-accent-primary flex gap-4">
-					<Headphones className="" />
-					<p>Contact Support</p>
+				<div className={`rounded-2xl cursor-pointer items-center w-fit p-4 bg-accent-primary flex gap-4`}>
+					<Headphones />
+					<p className={`${minimizeSidebar ? "hidden" : "flex"}`}>Contact Support</p>
 				</div>
 
-				<div className="rounded-2xl cursor-pointer p-4 bg-accent-secondary flex flex-col gap-2">
+				<div className="rounded-2xl cursor-pointer w-fit p-4 bg-accent-secondary flex flex-col gap-2">
 					<div className="flex gap-4 items-center">
-						<Gift className="" />
-						<p>Contact Support</p>
+						<Gift />
+						<p className={`${minimizeSidebar ? "hidden" : "flex"}`}>Contact Support</p>
 					</div>
-					<div className="text-gray-500 items-center gap-6 flex">
+					<div className={`text-gray-500 items-center gap-6 flex ${minimizeSidebar ? "hidden" : "flex"}`}>
 						<p>Upgrade your account</p>
 						<ChevronRight size={"small"} />
 					</div>
 				</div>
 
-				<div className="flex cursor-pointer items-center gap-2" onClick={() => setShowHomeMenu(true)}>
-					<Logout set={"two-tone"} primaryColor={COLORS.status.error} secondaryColor={COLORS.status.error} />
-					<p className="text-status-error">Logout</p>
+				<div
+					className={`flex cursor-pointer ${minimizeSidebar && "justify-center"} items-center gap-2`}
+					onClick={() => setShowHomeMenu(true)}>
+					<Logout set={"bulk"} primaryColor={COLORS.status.error} secondaryColor={COLORS.status.error} />
+					<p className={`text-status-error ${minimizeSidebar ? "hidden" : "flex"}`}>Logout</p>
 				</div>
 
 				<LogoutConfirmModal show={showHomeMenu} setShow={setShowHomeMenu} />

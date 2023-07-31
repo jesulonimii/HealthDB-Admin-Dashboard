@@ -3,7 +3,7 @@
 import {ReactComponent as LogoSvg} from "@assets/images/logo.svg";
 
 type LogoProps = {
-	className: string;
+	className?: string;
 };
 
 const Logo = ({className = "w-24"}: LogoProps) => {
