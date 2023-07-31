@@ -21,8 +21,8 @@ function SummaryCard({}) {
 				<DropdownMenu className="bg-transparent text-black" currentItem={"Last 7 days"} />
 			</div>
 
-			<div className="w-full">
-				<BarGraph/>
+			<div className="w-full p-8">
+				<BarGraph className="w-full "/>
 			</div>
 
 		</CardLayout>

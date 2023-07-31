@@ -21,11 +21,11 @@ const Home = () => {
 
 
 	return (
-		<div className="flex w-full p-4 h-full pb-12 min-h-[100vh] flex-col gap-6">
+		<div className="flex w-full p-8 md:p-4 h-full pb-12 min-h-[100vh] flex-col gap-6">
 			{/*First Segment*/}
-			<section className="w-full gap-6 flex h-[30%] ">
-				<div className="w-[60%] h-full flex gap-6">
-					<CardLayout className="w-1/2 h-full p-5 gap-6 justify-between">
+			<section className="w-full gap-6 flex flex-col md:flex-row h-[30%] ">
+				<div className="w-full md:w-[60%] h-full flex flex-col md:flex-row gap-6">
+					<CardLayout className="w-full md:w-1/2 h-full p-5 gap-6 justify-between">
 						<div className="flex justify-between">
 							<div className="w-10 h-10 flex items-center justify-center rounded-xl p-2 bg-primary bg-opacity-20">
 								<Graph primaryColor={COLORS.primary} />
@@ -50,7 +50,7 @@ const Home = () => {
 						</div>
 					</CardLayout>
 
-					<CardLayout className="w-1/2 h-full p-5 gap-6 justify-between">
+					<CardLayout className="w-full md:w-1/2 h-full p-5 gap-6 justify-between">
 						<div className="flex justify-between">
 							<div className="w-10 h-10 flex items-center justify-center rounded-xl p-2 bg-secondary bg-opacity-20">
 								<TwoUsers primaryColor="#1C1D22" />
@@ -79,7 +79,7 @@ const Home = () => {
 					</CardLayout>
 				</div>
 
-				<div className="w-[40%] h-full flex">
+				<div className="w-full md:w-[40%] h-full flex">
 					<CardLayout className="w-full p-5 gap-6 justify-between">
 						<div className="flex justify-between">
 							<div className="w-10 h-10 flex items-center justify-center rounded-xl p-2 bg-secondary bg-opacity-20">
@@ -116,11 +116,11 @@ const Home = () => {
 			</section>
 
 			{/*Second Segment*/}
-			<section className="w-full gap-6 flex h-[80%] ">
-				<div className="w-[60%] flex flex-col gap-6">
-					<div className="w-full flex gap-4 h-[45%]">
+			<section className="w-full gap-6 flex flex-col md:flex-row h-[80%] ">
+				<div className="w-full md:w-[60%] flex flex-col gap-6">
+					<div className="w-full flex flex-col md:flex-row gap-4 h-[45%]">
 						<MarketingCard/>
-						<div className="w-[50%] h-full flex gap-4 flex-col">
+						<div className="w-full md:w-[50%] h-full flex gap-4 flex-col">
 							<ProductsMetricCard/>
 							<CartsMetricCard/>
 						</div>
@@ -129,7 +129,7 @@ const Home = () => {
 					<SummaryCard/>
 				</div>
 
-				<div className="w-[40%] flex">
+				<div className="w-full md:w-[40%] flex">
 					<RecentOrdersCard/>
 				</div>
 			</section>

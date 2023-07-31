@@ -21,7 +21,7 @@ function MarketingCard({}) {
 	]
 
 	return (
-		<CardLayout className="w-[50%] h-full p-5">
+		<CardLayout className="w-full md:w-[50%] h-full p-5">
 			<div className="flex justify-between">
 				<p className="font-poppins font-medium">Marketing</p>
 
@@ -34,7 +34,7 @@ function MarketingCard({}) {
 					{
 						marketing_summary.map((category, index)=>{
 							return (
-								<div className="flex gap-2 items-center">
+								<div key={index} className="flex gap-2 items-center">
 									<span className={`w-2 h-2 rounded-full bg-${category.color}`}></span>
 									<p className="text-gray-500">{category.name}</p>
 								</div>

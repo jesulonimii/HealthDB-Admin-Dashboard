@@ -1,6 +1,6 @@
 import {Link, useLocation} from "react-router-dom";
 import {twMerge} from "tailwind-merge";
-import LogoutConfirmModal from "@shared//ui/LogoutConfirmModal";
+import LogoutConfirmModal from "./views/LogoutConfirmModal";
 import Logo from "@shared/ui/Logo";
 import {useState} from "react";
 import {Bag, Category, Chat, ChevronRight, Folder, Logout, Setting, TwoUsers} from "react-iconly";
@@ -22,32 +22,32 @@ const SidebarLayout = ({className = ""}) => {
 		{
 			name: "Orders",
 			icon: <Bag />,
-			link: "/a",
+			link: "/orders",
 			badge: 3,
 		},
 		{
 			name: "Customers",
 			icon: <TwoUsers />,
-			link: "/a",
+			link: "/customers",
 			badge: 0,
 		},
 		{
 			name: "Inventory",
 			icon: <Folder />,
 			badge: 0,
-			link: "/a",
+			link: "/inventory",
 		},
 		{
 			name: "Conversations",
 			icon: <Chat />,
-			link: "/a",
+			link: "/conversations",
 			badge: 16,
 		},
 		{
 			name: "settings",
 			icon: <Setting />,
 			badge: 0,
-			link: "/a",
+			link: "/settings",
 		},
 	];
 
