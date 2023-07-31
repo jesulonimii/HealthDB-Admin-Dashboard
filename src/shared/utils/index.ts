@@ -2,8 +2,14 @@ export const COLORS = {
     // => primary
     primary: "#5570F1",
     secondary: "#FFCC91",
-    ["accent-primary"]: "#5E63661A",
-    ["accent-secondary"]: "#fff5e9",
+    ["primary-50"] : "#97A5EB",
+    ["secondary-50"] : "#FFCC91",
+
+
+    accent : {
+        primary: "#5E63661A",
+        secondary: "#fff5e9"
+    },
 
     // => status colors
     status: {

@@ -6,7 +6,7 @@ const DashboardLayout = ({children}) => {
 		<main className="flex w-full bg-red-400 justify-between">
 			<SidebarLayout className="fixed w-[20%]" />
 
-			<div className="ml-0 w-full bg-bg-50 min-h-screen md:ml-[20%] flex flex-col">
+			<div className="ml-0 w-full bg-bg-50 min-h-screen h-fit md:ml-[20%] flex flex-col">
 				<Header/>
 
 				<div className="">

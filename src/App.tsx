@@ -11,7 +11,7 @@ function App() {
 		<IconlyProvider
 			set="light"
 			primaryColor={COLORS.icon.dark}
-			secondaryColor={COLORS["accent-secondary"]}
+			secondaryColor={COLORS.accent.secondary}
 			stroke="regular">
 
 			<BrowserRouter>

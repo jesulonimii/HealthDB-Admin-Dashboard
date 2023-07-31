@@ -54,13 +54,13 @@ const SidebarLayout = ({className = ""}) => {
 	return (
 		<div
 			className={twMerge(
-				`bg-bg-main w-[296px]  z-[5000] hidden h-screen flex-col justify-between px-10 py-12 md:flex ${className}`
+				`bg-bg-main w-[296px]  z-[5000] hidden h-screen flex-col justify-between px-10 py-8 md:flex ${className}`
 			)}>
 			<Link to="/">
 				<Logo className="w-36" />
 			</Link>
 
-			<div className="h-3/4 mt-">
+			<div className="h-fit mt-">
 				{links.map((link, index) => (
 					<div key={index} className="my-3">
 						<Link to={link.link}>
