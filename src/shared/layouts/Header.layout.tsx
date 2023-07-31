@@ -34,14 +34,16 @@ const Header = ({className = ""}: HeaderProps) => {
 				<SidebarMenuModal show={showSidebarMenu} setShow={setShowSidebarMenu} />
 
 				<div className={`w-full flex flex-row justify-between items-center pt-2 pb-4 ${className}`}>
-					<Link to="/" className="flex items-center gap-4">
-						<span className="flex md:hidden" onClick={()=>setShowSidebarMenu(!showSidebarMenu)}>
+					<div className="flex items-center gap-4">
+						<span className="flex md:hidden cursor-pointer" onClick={()=>setShowSidebarMenu(!showSidebarMenu)}>
 							<Category size={"medium"} />
 						</span>
-						<p className="font-bold font-poppins text-2xl capitalize">
-							{pathname === "" ? "dashboard" : pathname}
-						</p>
-					</Link>
+						<Link to="/" >
+							<p className="font-bold font-poppins text-2xl capitalize">
+								{pathname === "" ? "dashboard" : pathname}
+							</p>
+						</Link>
+					</div>
 
 					<div className="w-fit flex justify-center items-center gap-8">
 						<DropdownMenu

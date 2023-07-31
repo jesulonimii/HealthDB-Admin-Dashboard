@@ -3,7 +3,7 @@ import {twMerge} from "tailwind-merge";
 import LogoutConfirmModal from "./views/LogoutConfirmModal";
 import Logo from "@shared/ui/Logo";
 import {useState} from "react";
-import {Bag, Category, Chat, ChevronRight, Folder, Logout, Setting, TwoUsers} from "react-iconly";
+import {Bag, Category, Chat, ChevronRight, Folder, Iconly, Logout, Setting, TwoUsers} from "react-iconly";
 import {COLORS} from "@utils";
 import {Gift, Headphones} from "@assets/icons";
 
@@ -15,37 +15,37 @@ const SidebarLayout = ({className = ""}) => {
 	const links = [
 		{
 			name: "Dashboard",
-			icon: <Category primaryColor={"#fff"} set={"bulk"} />,
+			icon: "Category",
 			link: "/",
 			badge: 0,
 		},
 		{
 			name: "Orders",
-			icon: <Bag />,
+			icon: "Bag",
 			link: "/orders",
 			badge: 3,
 		},
 		{
 			name: "Customers",
-			icon: <TwoUsers />,
+			icon: "TwoUsers",
 			link: "/customers",
 			badge: 0,
 		},
 		{
 			name: "Inventory",
-			icon: <Folder />,
+			icon: "Folder",
 			badge: 0,
 			link: "/inventory",
 		},
 		{
 			name: "Conversations",
-			icon: <Chat />,
+			icon: "Chat",
 			link: "/conversations",
 			badge: 16,
 		},
 		{
 			name: "settings",
-			icon: <Setting />,
+			icon: "Setting",
 			badge: 0,
 			link: "/settings",
 		},
@@ -68,14 +68,14 @@ const SidebarLayout = ({className = ""}) => {
 								className={twMerge(
 									`group flex w-full items-center rounded-2xl p-4 px-6 transition duration-500 hover:bg-black hover:bg-opacity-20 ${
 										link.link === pathname &&
-										"bg-primary text-white hover:bg-secondary hover:bg-opacity-100"
+										"bg-primary text-white hover:bg-primary-dark hover:bg-opacity-100"
 									}`
 								)}>
 								<span
 									className={`mr-4 w-8 transition duration-500  ${
 										link.link === pathname && "fill-white"
 									}`}>
-									{link.icon}
+									<Iconly name={link.icon} set={link.link === pathname ? "bulk" : "light"} primaryColor={link.link === pathname ? "#fff" : COLORS.icon.dark} />
 								</span>
 								<p
 									className={twMerge(
@@ -109,7 +109,7 @@ const SidebarLayout = ({className = ""}) => {
 					</div>
 					<div className="text-gray-500 items-center gap-6 flex">
 						<p>Upgrade your account</p>
-						<ChevronRight size={"small"}/>
+						<ChevronRight size={"small"} />
 					</div>
 				</div>
 
