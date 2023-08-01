@@ -9,10 +9,12 @@ type FormInputProps = React.ComponentProps<"input"> & {
 	iconClick?: any;
 	label?: any;
 	description?: string;
+	startIconClassName? : string,
+	endIconClassName? : string
 };
 
 const FormInput = (props: FormInputProps) => {
-	const {className = "", startIcon, endIcon, iconClick, label, register, description, ...rest} = props;
+	const {className = "", startIcon, endIcon, iconClick, label, register, description, startIconClassName, endIconClassName, ...rest} = props;
 
 	const textFieldClass = `bg-bg-main text-black dark:text-gray-400 my-2 dark:autofill:bg-gray-900 autofill:bg-gray-500 p-3 ${
 		startIcon && "pl-12"
@@ -31,7 +33,7 @@ const FormInput = (props: FormInputProps) => {
 				</div>
 				<div className="relative flex w-full items-center">
 					<div
-						className={`absolute left-4 h-6 w-6 text-gray-400 ${
+						className={`absolute left-4 flex items-center h-6 w-6 text-gray-400 ${
 							iconClick && "hover:text-primary cursor-pointer"
 						}`}
 						onClick={iconClick}>
@@ -45,7 +47,7 @@ const FormInput = (props: FormInputProps) => {
 						className={twMerge(`${textFieldClass} ${className}`)}
 					/>
 					<div
-						className={`absolute right-4 h-6 w-6 text-gray-400 transition ${
+						className={`absolute right-4 flex items-center h-6 w-6 text-gray-400 transition ${
 							iconClick && "hover:text-primary cursor-pointer"
 						}`}
 						onClick={iconClick}>
@@ -58,9 +60,9 @@ const FormInput = (props: FormInputProps) => {
 		return (
 			<div className="relative flex w-full items-center">
 				<div
-					className={`absolute left-4 h-6 w-6 text-gray-400 ${
+					className={twMerge(`absolute left-4 h-6 w-6 flex items-center text-gray-400 ${
 						iconClick && "hover:text-primary cursor-pointer"
-					}`}
+					} ${startIconClassName}`)}
 					onClick={iconClick}>
 					{startIcon}
 				</div>
@@ -72,9 +74,9 @@ const FormInput = (props: FormInputProps) => {
 					className={twMerge(`${textFieldClass} ${className}`)}
 				/>
 				<div
-					className={`absolute right-4 h-6 w-6 text-gray-400 transition ${
+					className={twMerge(`absolute right-4 h-6 w-6 flex items-center  text-gray-400 transition ${
 						iconClick && "hover:text-primary cursor-pointer"
-					}`}
+					} ${endIconClassName}`)}
 					onClick={iconClick}>
 					{endIcon}
 				</div>

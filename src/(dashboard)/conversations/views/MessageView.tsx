@@ -1,10 +1,14 @@
 import AvatarImage from "@ui/AvatarImage.tsx";
 import {twMerge} from "tailwind-merge";
-import {Bag} from "react-iconly";
+import {Bag, Plus, Send} from "react-iconly";
 import CardLayout from "@ui/CardLayout.tsx";
+import FormInput from "@ui/forms/FormInput.tsx";
+import React from "react";
+import {COLORS} from "@utils";
+import CustomButton from "@ui/forms/CustomButton.tsx";
+import {FaceSmileIcon} from "@heroicons/react/24/outline";
 
 function MessageView({chats_list, current_chat, className}) {
-
 	const status_color = {
 		true: "bg-primary",
 		false: "bg-gray-400",
@@ -50,7 +54,26 @@ function MessageView({chats_list, current_chat, className}) {
 
 			<div className="h-[80%] overflow-y-auto"></div>
 
-			<div className="h-[10%] -mx-5 border-t"></div>
+			<div className="h-[10%] -mx-5 px-5 items-center flex border-t">
+				<FormInput
+					placeholder="Your message"
+					className="items-center flex"
+					startIcon={
+						<span className="w-full cursor-pointer -ml-2">
+							<Plus set="bulk" secondaryColor={COLORS.accent.secondary} primaryColor={COLORS.icon.dark} />
+						</span>
+					}
+					endIconClassName="w-fit"
+					endIcon={
+						<span className="w-full cursor-pointer flex items-center gap-4">
+							<FaceSmileIcon className="text-primary w-8" />
+							<CustomButton className="w-fit bg-accent-secondary text-black" endIcon={<Send primaryColor={"#000"} size={"small"} set={"bold"} />}>
+								Send
+							</CustomButton>
+						</span>
+					}
+				/>
+			</div>
 		</CardLayout>
 	);
 }
