@@ -273,11 +273,11 @@ function ConversationPage({}) {
 				<CustomButton>New Message</CustomButton>
 			</section>
 
-			<section className="w-full h-full gap-4 flex relative">
-				<ContactsCard className="w-[33%]" chats_list={chats_list} />
+			<section className="w-full h-full gap-4 flex flex-col-reverse md:flex-row relative">
+				<ContactsCard className="w-full md:w-[33%]" chats_list={chats_list} />
 
 				<MessageView
-					className="h-[80vh] sticky w-[66%] right-0 top-[18%]"
+					className="h-[80vh] md:sticky w-full md:w-[66%] right-0 top-[18%]"
 					chats_list={chats_list}
 					current_chat={current_chat}
 				/>

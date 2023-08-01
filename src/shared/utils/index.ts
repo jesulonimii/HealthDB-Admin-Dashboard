@@ -4,7 +4,7 @@ export const COLORS = {
     secondary: "#FFCC91",
     ["primary-50"] : "#97A5EB",
     ["primary-dark"] : "#152b91",
-    ["secondary-50"] : "#D7B593D1",
+    ["secondary-50"] : "#FFCC917C",
 
 
     accent : {
