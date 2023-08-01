@@ -72,10 +72,20 @@ function MessageView({chats_list, current_chat, className}) {
 				</div>
 			</div>
 
-			<div className="h-[80%] overflow-y-auto flex flex-col py-4 items-center">
+			<div className="h-[80%] overflow-y-auto flex flex-col px-2 py-4 items-center">
 				<MessageDateGroupIndicator date={"12 August 2022"} />
 
 				<MessageItem message={messages[0]} />
+
+				<MessageItem message={messages[1]} />
+
+				<MessageItem message={messages[2]} />
+
+				<MessageDateGroupIndicator date={"Today"} />
+
+				<MessageItem message={messages[3]} />
+
+
 			</div>
 
 			{/*Input Field*/}

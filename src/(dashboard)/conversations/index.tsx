@@ -5,8 +5,23 @@ import AvatarImage from "@ui/AvatarImage.tsx";
 import {twMerge} from "tailwind-merge";
 import {Bag} from "react-iconly";
 import MessageView from "@src/(dashboard)/conversations/views/MessageView.tsx";
+import React from "react";
 
 function ConversationPage({}) {
+	const product = {
+		name: "iPhone 13",
+		pending: (
+			<div className="text-gray-500 flex gap-1 text-xs w-full items-center">
+				<p className="text-primary font-medium text-xs w-fit">12</p>
+				<p className="w-fit">In Stock</p>
+			</div>
+		),
+		image: "/iphone-2.png",
+		date: "",
+		price: "₦730,000.00",
+		qty: 1,
+	};
+
 	const chats_list = [
 		{
 			active: true,
@@ -16,17 +31,25 @@ function ConversationPage({}) {
 				{
 					type: "received",
 					time: "2023-07-27T00:55:00.000Z",
-					message: "Hello!",
+					attachments: {
+						productInfo : product,
+					},
+					message: "Hello, I want to make enquiries about your product",
 				},
 				{
 					type: "sent",
-					time: "2023-07-27T00:55:00.000Z",
-					message: "How are you?",
+					time: "2023-07-27T00:57:00.000Z",
+					message: "Hello Janet, thank you for reaching out",
+				},
+				{
+					type: "sent",
+					time: "2023-07-27T00:57:00.000Z",
+					message: "What do you need to know?",
 				},
 				{
 					type: "received",
 					time: "2023-07-27T00:55:00.000Z",
-					message: "Hi, i want make enquiries about your business.",
+					message: "I want to know if the price is negotiable, i need about 2 Units.",
 				},
 			],
 			badge: 2,
