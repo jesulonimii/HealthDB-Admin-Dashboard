@@ -7,11 +7,27 @@ import React from "react";
 import {COLORS} from "@utils";
 import CustomButton from "@ui/forms/CustomButton.tsx";
 import {FaceSmileIcon} from "@heroicons/react/24/outline";
+import MessageDateGroupIndicator from "@src/(dashboard)/conversations/views/MessageDateGroupIndicator.tsx";
+import ProductCard from "@src/(dashboard)/home/views/ProductCard.tsx";
 
 function MessageView({chats_list, current_chat, className}) {
 	const status_color = {
 		true: "bg-primary",
 		false: "bg-gray-400",
+	};
+
+	const product = {
+		name: "iPhone 13",
+		pending: (
+			<div className="text-gray-500 flex gap-1 text-xs w-full items-center">
+				<p className="text-primary font-medium text-xs w-fit">12</p>
+				<p className="w-fit">In Stock</p>
+			</div>
+		),
+		image: "/iphone-2.png",
+		date: "",
+		price: "₦730,000.00",
+		qty: 1,
 	};
 
 	return (
@@ -52,8 +68,19 @@ function MessageView({chats_list, current_chat, className}) {
 				</div>
 			</div>
 
-			<div className="h-[80%] overflow-y-auto"></div>
+			<div className="h-[80%] overflow-y-auto flex flex-col py-4 items-center">
+				<MessageDateGroupIndicator date={"12 August 2022"} />
 
+				<div className="w-full my-2">
+					<div className="max-w-[80%] gap-4">
+						<ProductCard item={product} className="w-[50%]" />
+
+						<div className="w-full bg-primary rounded-xl"></div>
+					</div>
+				</div>
+			</div>
+
+			{/*Input Field*/}
 			<div className="h-[10%] -mx-5 px-5 items-center flex border-t">
 				<FormInput
 					placeholder="Your message"
@@ -67,7 +94,9 @@ function MessageView({chats_list, current_chat, className}) {
 					endIcon={
 						<span className="w-full cursor-pointer flex items-center gap-4">
 							<FaceSmileIcon className="text-primary w-8" />
-							<CustomButton className="w-fit bg-accent-secondary text-black" endIcon={<Send primaryColor={"#000"} size={"small"} set={"bold"} />}>
+							<CustomButton
+								className="w-fit bg-accent-secondary text-black"
+								endIcon={<Send primaryColor={"#000"} size={"small"} set={"bold"} />}>
 								Send
 							</CustomButton>
 						</span>

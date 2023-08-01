@@ -1,5 +1,6 @@
 import CardLayout from "@ui/CardLayout.tsx";
 import React from "react";
+import ProductCard from "@src/(dashboard)/home/views/ProductCard.tsx";
 
 function RecentOrdersCard({}) {
 
@@ -87,30 +88,7 @@ function RecentOrdersCard({}) {
 
 			<div className="flex flex-col gap-2 mt-4">
 				{products.map((item, index) => {
-					return (
-						<div key={index} className="flex gap-4 border-b py-3 justify-between">
-							<img src={item.image} className="w-[10%]" alt={"product-image"} />
-
-							<div className="w-[70%] gap-2 justify-center flex flex-col">
-								<p className="">{item.name}</p>
-								<p className="font-medium">
-									{item.price} x {item.qty}
-								</p>
-							</div>
-
-							<div className="w-[20%] gap-2 justify-center flex flex-col items-end">
-								<p className="text-sm text-gray-500">{item.date}</p>
-								<p
-									className={`font-medium bg-opacity-20 px-3 w-fit flex justify-center rounded-lg ${
-										item.pending
-											? "text-status-error bg-status-error"
-											: "text-status-success bg-status-success"
-									}`}>
-									{item.pending ? "Pending" : "Completed"}
-								</p>
-							</div>
-						</div>
-					);
+					return <ProductCard item={item} key={index} />
 				})}
 			</div>
 		</CardLayout>
