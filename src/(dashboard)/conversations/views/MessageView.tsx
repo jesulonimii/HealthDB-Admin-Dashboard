@@ -9,12 +9,16 @@ import CustomButton from "@ui/forms/CustomButton.tsx";
 import {FaceSmileIcon} from "@heroicons/react/24/outline";
 import MessageDateGroupIndicator from "@src/(dashboard)/conversations/views/MessageDateGroupIndicator.tsx";
 import ProductCard from "@src/(dashboard)/home/views/ProductCard.tsx";
+import moment from "moment";
+import MessageItem from "@src/(dashboard)/conversations/views/MessageItem.tsx";
 
 function MessageView({chats_list, current_chat, className}) {
 	const status_color = {
 		true: "bg-primary",
 		false: "bg-gray-400",
 	};
+
+	const {messages} = current_chat;
 
 	const product = {
 		name: "iPhone 13",
@@ -44,7 +48,7 @@ function MessageView({chats_list, current_chat, className}) {
 									className={twMerge(
 										`w-4 h-4 bg-gray-400 ${
 											status_color[String(current_chat.online)]
-										} border-2 border-blue-50 rounded-full -right-1 -top-1`
+										} border-2 border-blue-50 rounded-full -right-1 -top-1`,
 									)}></span>
 
 								<p className="text-gray-400">Online</p>
@@ -71,13 +75,7 @@ function MessageView({chats_list, current_chat, className}) {
 			<div className="h-[80%] overflow-y-auto flex flex-col py-4 items-center">
 				<MessageDateGroupIndicator date={"12 August 2022"} />
 
-				<div className="w-full my-2">
-					<div className="max-w-[80%] gap-4">
-						<ProductCard item={product} className="w-[50%]" />
-
-						<div className="w-full bg-primary rounded-xl"></div>
-					</div>
-				</div>
+				<MessageItem message={messages[0]} />
 			</div>
 
 			{/*Input Field*/}

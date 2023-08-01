@@ -3,6 +3,7 @@ import FormInput from "@ui/forms/FormInput.tsx";
 import {Search} from "react-iconly";
 import AvatarImage from "@ui/AvatarImage.tsx";
 import {twMerge} from "tailwind-merge";
+import moment from "moment";
 
 function ContactsCard({chats_list, className=""}) {
 
@@ -61,7 +62,7 @@ function ContactsCard({chats_list, className=""}) {
 										)}
 									</>
 								)}
-								<p className="w-fit text-gray-400 text-sm">{last_message_object?.time}</p>
+								<p className="w-fit text-gray-400 text-sm">{moment(last_message_object?.time).format("HH:MM a")}</p>
 							</div>
 						</div>
 					);

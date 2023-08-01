@@ -14,18 +14,18 @@ function ConversationPage({}) {
 			image: "/jane.png",
 			messages: [
 				{
-					type: "from",
-					time: "1:00 PM",
+					type: "received",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "Hello!",
 				},
 				{
-					type: "to",
-					time: "1:00 PM",
+					type: "sent",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "How are you?",
 				},
 				{
-					type: "from",
-					time: "1:00 PM",
+					type: "received",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "Hi, i want make enquiries about your business.",
 				},
 			],
@@ -39,18 +39,18 @@ function ConversationPage({}) {
 			image: "/janet.png",
 			messages: [
 				{
-					type: "from",
-					time: "1:00 PM",
+					type: "received",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "Hello!",
 				},
 				{
-					type: "to",
-					time: "1:00 PM",
+					type: "sent",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "How are you?",
 				},
 				{
-					type: "from",
-					time: "1:00 PM",
+					type: "received",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "Hi, i want make enquiries about your business.",
 				},
 			],
@@ -64,18 +64,18 @@ function ConversationPage({}) {
 			image: "/kunle.png",
 			messages: [
 				{
-					type: "from",
-					time: "1:00 PM",
+					type: "received",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "Hello!",
 				},
 				{
-					type: "to",
-					time: "1:00 PM",
+					type: "sent",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "How are you?",
 				},
 				{
-					type: "from",
-					time: "1:00 PM",
+					type: "received",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "Hi, i want make enquiries about your business.",
 				},
 			],
@@ -89,18 +89,18 @@ function ConversationPage({}) {
 			image: "/jane.png",
 			messages: [
 				{
-					type: "from",
-					time: "1:00 PM",
+					type: "received",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "Hello!",
 				},
 				{
-					type: "to",
-					time: "1:00 PM",
+					type: "sent",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "How are you?",
 				},
 				{
-					type: "from",
-					time: "1:00 PM",
+					type: "received",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "Hi, i want make enquiries about your business.",
 				},
 			],
@@ -114,18 +114,18 @@ function ConversationPage({}) {
 			image: "/janet.png",
 			messages: [
 				{
-					type: "from",
-					time: "1:00 PM",
+					type: "received",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "Hello!",
 				},
 				{
-					type: "to",
-					time: "1:00 PM",
+					type: "sent",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "How are you?",
 				},
 				{
-					type: "from",
-					time: "1:00 PM",
+					type: "received",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "Hi, i want make enquiries about your business.",
 				},
 			],
@@ -139,18 +139,18 @@ function ConversationPage({}) {
 			image: "/kunle.png",
 			messages: [
 				{
-					type: "from",
-					time: "1:00 PM",
+					type: "received",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "Hello!",
 				},
 				{
-					type: "to",
-					time: "1:00 PM",
+					type: "sent",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "How are you?",
 				},
 				{
-					type: "from",
-					time: "1:00 PM",
+					type: "received",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "Hi, i want make enquiries about your business.",
 				},
 			],
@@ -164,18 +164,18 @@ function ConversationPage({}) {
 			image: "/jane.png",
 			messages: [
 				{
-					type: "from",
-					time: "1:00 PM",
+					type: "received",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "Hello!",
 				},
 				{
-					type: "to",
-					time: "1:00 PM",
+					type: "sent",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "How are you?",
 				},
 				{
-					type: "from",
-					time: "1:00 PM",
+					type: "received",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "Hi, i want make enquiries about your business.",
 				},
 			],
@@ -189,18 +189,18 @@ function ConversationPage({}) {
 			image: "/janet.png",
 			messages: [
 				{
-					type: "from",
-					time: "1:00 PM",
+					type: "received",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "Hello!",
 				},
 				{
-					type: "to",
-					time: "1:00 PM",
+					type: "sent",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "How are you?",
 				},
 				{
-					type: "from",
-					time: "1:00 PM",
+					type: "received",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "Hi, i want make enquiries about your business.",
 				},
 			],
@@ -214,18 +214,18 @@ function ConversationPage({}) {
 			image: "/kunle.png",
 			messages: [
 				{
-					type: "from",
-					time: "1:00 PM",
+					type: "received",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "Hello!",
 				},
 				{
-					type: "to",
-					time: "1:00 PM",
+					type: "sent",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "How are you?",
 				},
 				{
-					type: "from",
-					time: "1:00 PM",
+					type: "received",
+					time: "2023-07-27T00:55:00.000Z",
 					message: "Hi, i want make enquiries about your business.",
 				},
 			],
