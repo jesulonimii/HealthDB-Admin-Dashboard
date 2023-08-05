@@ -45,6 +45,15 @@ export const cleanUrl = (url) => {
     return uri.replaceAll("/", "%2F");
 }
 
+export const HEX2RGBA = (hex, alpha = 1) => {
+    if (hex.length < 6 || hex.length > 7) {
+        return `rgba(1, 1, 1, ${alpha})`;
+    } else {
+        const [r, g, b] = hex.match(/\w\w/g).map((x) => parseInt(x, 16));
+        return `rgba(${r},${g},${b},${alpha})`;
+    }
+};
+
 
 export const callApi = async (config) => {
     try {

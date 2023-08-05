@@ -4,35 +4,29 @@ import AppointmentInfoCard from "@src/(dashboard)/home/views/AppointmentInfoCard
 
 function PendingAppointmentsCard({}) {
 
-	const products = [
+	const booked_appointments = [
 		{
-			name: "Jesulonimi William",
-			pending: true,
-			image: "/iphone-1.png",
-			date: "12 Sept 2022",
-			price: "CSC/2019/108",
-			qty: 1,
+			date_time: "2023-08-04T04:44:13.041+00:00",
+			appointment_id: "20230804/CSC2019108",
+			student_info: {
+				first_name: "Jesulonimi",
+				last_name: "William",
+				matric_number: "CSC/2019/108",
+				image: "https://eportal.oauife.edu.ng/pic.php?image_id=CSC/2019/10820212",
+			},
 		},
-		{
-			name: "iPhone 13",
-			pending: false,
-			image: "/iphone-2.png",
-			date: "12 Sept 2022",
-			price: "₦730,000.00",
-			qty: 1,
-		}
 	];
 
 
 	return (
 		<CardLayout className="w-full h-full min-h-[75vh] p-5 flex-grow">
 			<div className="flex justify-between">
-				<p className="font-outfit font-medium">Pending Appointments</p>
+				<p className="font-outfit text-lg font-medium">Pending Appointments</p>
 			</div>
 
 			<div className="flex flex-col gap-2 mt-4">
-				{products.map((item, index) => {
-					return <AppointmentInfoCard item={item} key={index} />
+				{booked_appointments.map((item, index) => {
+					return <AppointmentInfoCard appointment_details={item} key={index} />
 				})}
 			</div>
 		</CardLayout>

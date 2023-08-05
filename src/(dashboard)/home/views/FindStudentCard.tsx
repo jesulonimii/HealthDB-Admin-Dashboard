@@ -7,7 +7,6 @@ import {useForm} from "react-hook-form";
 import {GetUserInfo} from "@shared/api";
 import AvatarImage from "@ui/AvatarImage.tsx";
 import {Link} from "react-router-dom";
-import {cleanUrl} from "@utils";
 
 function FindStudentCard({}) {
 	const [loading, setLoading] = useState(false);
@@ -30,13 +29,13 @@ function FindStudentCard({}) {
 		GetUserInfo(data?.matric_number)
 			.then((res) => {
 				console.log(res);
-				res.error ? setError(res.error) : setStudent(res)
-				setLoading(false)
+				res.error ? setError(res.error) : setStudent(res);
+				setLoading(false);
 			})
 			.catch((err) => {
 				console.log(err);
 				alert(err);
-				setError(err)
+				setError(err);
 				setLoading(false);
 			});
 	};
@@ -61,23 +60,45 @@ function FindStudentCard({}) {
 				</CustomButton>
 			</form>
 
-			{student && (
-				<div className="flex flex-col gap-2 w-full">
-					<p>Found Student:</p>
-					<Link to={`/student/${cleanUrl(student?.user_id)}`} >
-						<div className="w-full h-[10vh] border border-bg-50 transition duration-300 hover:border-primary bg-bg-50 rounded-lg p-4 gap-2 flex">
-							<AvatarImage src={student?.personal_info?.profile_image}  className="h-full" />
-							<div className="w-[80%] gap-2 flex-col">
-								<p className="font-outfit text-xl font-medium">{student?.personal_info?.first_name} {student?.personal_info?.last_name}</p>
-								<p className="text-gray-500 text-sm">{student?.user_id.toUpperCase()}</p>
-							</div>
-						</div>
-					</Link>
-
-				</div>
-			)}
+			{student && <StudentCard studentData={student} />}
 		</CardLayout>
 	);
 }
+
+type StudentCardProps = {
+	studentData: {
+		user_id: string;
+		student: any;
+		personal_info: {
+			profile_image: string;
+			first_name: string;
+			last_name: string;
+		};
+	};
+};
+
+const StudentCard = ({studentData}: StudentCardProps) => {
+	const {user_id, student, personal_info} = studentData || {};
+
+	return (
+		<div className="flex flex-col gap-2 w-full">
+			<p>Found Student:</p>
+			<Link to={`/students?search=${user_id}`}>
+				<div className="w-full h-[10vh] border border-bg-50 transition duration-300 hover:border-primary bg-bg-50 rounded-lg p-4 gap-2 flex">
+					<AvatarImage src={personal_info?.profile_image} className="h-full" />
+					<div className="w-[80%] gap-2 flex-col">
+						<p className="font-outfit text-xl font-medium">
+							{personal_info?.first_name} {personal_info?.last_name}
+						</p>
+						<span className="flex gap-2">
+							<p className="text-gray-500 text-sm">{user_id.toUpperCase()}</p>
+							<p className="text-gray-500 text-sm">{student?.department}</p>
+						</span>
+					</div>
+				</div>
+			</Link>
+		</div>
+	);
+};
 
 export default FindStudentCard;
