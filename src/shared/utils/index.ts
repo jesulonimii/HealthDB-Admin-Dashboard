@@ -1,4 +1,5 @@
 import axios from "axios";
+export {default as QUERY_KEYS} from "./query-keys";
 
 export const COLORS = {
     // => primary
@@ -62,6 +63,6 @@ export const callApi = async (config) => {
         return data;
     } catch (error) {
         //console.error(error);
-        return error.response.data;
+        return error.response.data ? error.response.data : JSON.stringify(error)
     }
 };

@@ -13,3 +13,16 @@ export const GetUserInfo = async (id: string) => {
 
 	return await callApi(config);
 };
+
+
+export const GetAppointments = async () => {
+	const config = {
+		method: "get",
+		url: `${API_URL}/appointments`,
+		headers: {
+			"Content-Type": "application/json",
+		},
+	};
+
+	return await callApi(config);
+};

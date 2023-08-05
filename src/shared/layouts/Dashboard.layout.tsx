@@ -4,7 +4,7 @@ import {useState} from "react";
 
 const DashboardLayout = ({children}) => {
 
-	const [minimizeSidebar, setMinimizeSidebar] = useState(false);
+	const [minimizeSidebar, setMinimizeSidebar] = useState(true);
 
 	const collapseSidebar = () =>{
 		minimizeSidebar && setMinimizeSidebar(false)

@@ -1,12 +1,14 @@
 import CardLayout from "@ui/CardLayout.tsx";
-import FormInput from "@ui/forms/FormInput.tsx";
-import CustomButton from "@ui/forms/CustomButton.tsx";
-import {Search} from "react-iconly";
-import {useState} from "react";
-import {useForm} from "react-hook-form";
-import {GetUserInfo} from "@shared/api";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { GetUserInfo } from "@shared/api";
 import AvatarImage from "@ui/AvatarImage.tsx";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import FormInput from "@ui/forms/FormInput.tsx";
+import {Search} from "react-iconly";
+import CustomButton from "@ui/forms/CustomButton.tsx";
+import IconStyled from "@ui/IconStyled.tsx";
+import {COLORS} from "@utils";
 
 function FindStudentCard({}) {
 	const [loading, setLoading] = useState(false);
@@ -16,7 +18,7 @@ function FindStudentCard({}) {
 		handleSubmit,
 		watch,
 		control,
-		formState: {errors},
+		formState: { errors },
 	} = useForm();
 
 	const [student, setStudent] = useState(null);
@@ -41,26 +43,38 @@ function FindStudentCard({}) {
 	};
 
 	return (
-		<CardLayout className="w-full h-full p-36 gap-2 items-center">
-			<p className="text-2xl font-outfit font-bold">Find Student</p>
+		<CardLayout className="w-full h-full justify-between">
 
-			<p className="w-full text-center text-gray-500">
-				Retrieve the details of a student from the database by entering their Matric Number:
-			</p>
+			<div className="flex justify-between">
 
-			<form onSubmit={handleSubmit(findStudent)} className="max-w-[389px] my-8 w-full gap-2 flex flex-col">
-				<FormInput
-					register={register("matric_number")}
-					startIcon={<Search />}
-					placeholder="Find Student by matric number"
-				/>
+				<IconStyled icon={"MagnifyingGlassIcon"} color={COLORS.secondary} />
 
-				<CustomButton loading={loading} className="w-full py-3">
-					Find Student
-				</CustomButton>
-			</form>
+			</div>
 
-			{student && <StudentCard studentData={student} />}
+			<div className="flex flex-col gap-2 py-12 px-36 w-full items-center">
+
+				<p className="text-2xl font-outfit font-bold">
+					Find Student Health Centre Information
+				</p>
+
+				<p className="w-full text-center text-gray-500">
+					Retrieve the health centre details of a student from the database by entering their Matric Number:
+				</p>
+
+				<form onSubmit={handleSubmit(findStudent)} className="max-w-[389px] my-8 w-full gap-2 flex flex-col">
+					<FormInput
+						register={register("matric_number")}
+						startIcon={<Search />}
+						placeholder="Find Student by matric number"
+					/>
+
+					<CustomButton loading={loading} className="w-full py-3">
+						Find Student
+					</CustomButton>
+				</form>
+
+				{student && <StudentCard studentData={student} />}
+			</div>
 		</CardLayout>
 	);
 }
@@ -77,8 +91,8 @@ type StudentCardProps = {
 	};
 };
 
-const StudentCard = ({studentData}: StudentCardProps) => {
-	const {user_id, student, personal_info} = studentData || {};
+const StudentCard = ({ studentData }: StudentCardProps) => {
+	const { user_id, student, personal_info } = studentData || {};
 
 	return (
 		<div className="flex flex-col gap-2 w-full">

@@ -13,7 +13,7 @@ const Home = () => {
 	];
 
 	return (
-		<div className="flex w-full p-8 md:p-4 h-fit pb-4 min-h-[80vh] flex-col gap-6 flex-grow">
+		<div className="flex w-full p-8 md:p-4 h-fit pb-16 min-h-[80vh] flex-col gap-6 flex-grow">
 			<section className="w-full gap-6 flex flex-col md:flex-row h-full ">
 				<section className="w-full md:w-[60%] h-fit gap-6 flex flex-col">
 					<QuickNewsUpdateCard />
@@ -21,7 +21,7 @@ const Home = () => {
 					<FindStudentCard />
 				</section>
 
-				<div className="w-full h-full md:w-[40%] flex flex-grow min-h-full">
+				<div className="w-full md:w-[40%] flex flex-grow min-h-full">
 					<PendingAppointmentsCard />
 				</div>
 			</section>

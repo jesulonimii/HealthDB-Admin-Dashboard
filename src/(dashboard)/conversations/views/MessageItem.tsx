@@ -1,24 +1,20 @@
-import AppointmentInfoCard from "@src/(dashboard)/home/views/AppointmentInfoCard.tsx";
 import React from "react";
 import moment from "moment/moment";
 
-function MessageItem({message}) {
-
-
-	const {attachments} = message || null
-
-
+function MessageItem({ message }) {
+	const { attachments } = message || null;
 
 	return (
-		<div className={`w-full my-4 ${message.type==="sent" && "float-right" }`}>
-			<div className={`w-full gap-4 flex flex-col ${message.type === "sent" && "items-end"}`}>
-				{
-					attachments?.productInfo && <AppointmentInfoCard item={attachments?.productInfo} className="w-[50%]" />
-				}
-
-				<MessageBox {...message} type={message.type} />
-			</div>
-		</div>
+		<></>
+		/*	<div className={`w-full my-4 ${message.type==="sent" && "float-right" }`}>
+				<div className={`w-full gap-4 flex flex-col ${message.type === "sent" && "items-end"}`}>
+					{
+						attachments?.productInfo && <AppointmentInfoCard appointment_details={attachments?.productInfo} className="w-[50%]" />
+					}
+	
+					<MessageBox {...message} type={message.type} />
+				</div>
+			</div>*/
 	);
 }
 
@@ -31,15 +27,7 @@ type MessageBoxProps = {
 };
 
 const MessageBox = (props: MessageBoxProps) => {
-
-	const {
-		type = "sent",
-		message = "hello",
-		time = new Date(),
-		index = null,
-		delivered,
-		...rest
-	} = props
+	const { type = "sent", message = "hello", time = new Date(), index = null, delivered, ...rest } = props;
 
 	if (type === "received") {
 		return (
@@ -58,10 +46,10 @@ const MessageBox = (props: MessageBoxProps) => {
 		return (
 			<div className="w-fit justify-end">
 				<div className="my-2 w-full flex flex-col items-end">
-					<div className={`w-fit rounded-t-xl rounded-bl-xl bg-secondary-50 p-3 py-3 text-black`}>{message}</div>
-					<p className="text-xs w-fit text-black dark:text-gray-500 mt-1">
-						{moment(time).format("HH:MM a")}
-					</p>
+					<div className={`w-fit rounded-t-xl rounded-bl-xl bg-secondary-50 p-3 py-3 text-black`}>
+						{message}
+					</div>
+					<p className="text-xs w-fit text-black dark:text-gray-500 mt-1">{moment(time).format("HH:MM a")}</p>
 				</div>
 			</div>
 		);
