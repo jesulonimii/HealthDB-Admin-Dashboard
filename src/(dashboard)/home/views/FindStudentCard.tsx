@@ -51,13 +51,13 @@ function FindStudentCard({}) {
 
 			</div>
 
-			<div className="flex flex-col gap-2 py-12 px-36 w-full items-center">
+			<div className="flex flex-col gap-2 py-12 md:px-36 w-full items-center">
 
 				<p className="text-2xl font-outfit font-bold">
 					Find Student Health Centre Information
 				</p>
 
-				<p className="w-full text-center text-gray-500">
+				<p className="w-full md:text-center text-gray-500">
 					Retrieve the health centre details of a student from the database by entering their Matric Number:
 				</p>
 
