@@ -14,7 +14,7 @@ type productCardProps = {
 	className? : string
 };
 
-function ProductCard({ item, className }: productCardProps) {
+function AppointmentInfoCard({ item, className }: productCardProps) {
 	return (
 		<div className={twMerge(`flex gap-4 border-b py-3 justify-between items-center ${className}`)}>
 			<AvatarImage src={item.image} className="" />
@@ -51,4 +51,4 @@ function ProductCard({ item, className }: productCardProps) {
 	);
 }
 
-export default ProductCard;
+export default AppointmentInfoCard;

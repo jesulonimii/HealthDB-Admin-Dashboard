@@ -13,8 +13,8 @@ function ContactsCard({chats_list, className=""}) {
 		<CardLayout className={twMerge(`gap-4 p-0 ${className}`)}>
 			<div className="p-5 gap-4 flex flex-col">
 				<div className="flex items-center justify-between">
-					<p className="font-semibold text-xl text-black font-poppins">Contacts</p>
-					<p className="text-gray-500 font-poppins text-xl">34</p>
+					<p className="font-semibold text-xl text-black font-outfit">Contacts</p>
+					<p className="text-gray-500 font-outfit text-xl">34</p>
 				</div>
 
 				<FormInput
@@ -41,7 +41,7 @@ function ContactsCard({chats_list, className=""}) {
 								<AvatarImage src={chat.image} status_indicator={{online: chat.online}} />
 							</div>
 							<div className="w-[68%] px-4 py-3 justify-between h-full flex flex-col">
-								<p className="font-poppins font-medium">{chat.name}</p>
+								<p className="font-outfit font-medium">{chat.name}</p>
 								<p className="w-full text-gray-400 text-sm line-clamp-1 text-ellipsis">
 									{last_message_object?.message}
 								</p>

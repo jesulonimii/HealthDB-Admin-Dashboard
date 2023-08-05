@@ -17,9 +17,7 @@ const Header = ({className = ""}: HeaderProps) => {
 	const pathname = path.replaceAll("/", "");
 
 	const workspaces = [
-		{name: "Nanny's Shop", value: "1", icon: ""},
-		{name: "Joe's", value: "2", icon: ""},
-		{name: "Work Organization", value: "3", icon: ""},
+		{name: "Dr. William", value: "1", icon: ""}
 	];
 
 
@@ -39,7 +37,7 @@ const Header = ({className = ""}: HeaderProps) => {
 							<Category size={"medium"} />
 						</span>
 						<Link to="/" >
-							<p className="font-bold font-poppins text-2xl capitalize">
+							<p className="font-bold font-outfit text-2xl capitalize">
 								{pathname === "" ? "dashboard" : pathname}
 							</p>
 						</Link>
@@ -52,9 +50,9 @@ const Header = ({className = ""}: HeaderProps) => {
 							className="bg-accent-secondary text-black rounded-xl py-2  hidden sm:flex"
 						/>
 
-						<div className="cursor-pointer hidden md:flex">
+						{/*<div className="cursor-pointer hidden md:flex">
 							<Notification set="bold" primaryColor={COLORS.primary} />
-						</div>
+						</div>*/}
 
 						<span onClick={()=>setShowUserMenu(true)}>
 							<img
@@ -66,7 +64,7 @@ const Header = ({className = ""}: HeaderProps) => {
 					</div>
 				</div>
 
-				<div className="border-t items-center py-4 flex gap-2">
+				<div className="border-t flex hidden items-center py-4 gap-2">
 					<Link to={"/"}>
 						<Home set={"bold"} primaryColor={COLORS.primary} size={"small"} />
 					</Link>

@@ -28,35 +28,23 @@ const SidebarLayout = ({className = "", minimizeSidebar, setMinimizeSidebar, onH
 			badge: 0,
 		},
 		{
-			name: "Orders",
-			icon: "Bag",
-			link: "/orders",
+			name: "Appointments",
+			icon: "Calendar",
+			link: "/appointments",
 			badge: 3,
 		},
 		{
-			name: "Customers",
+			name: "Students ",
 			icon: "TwoUsers",
-			link: "/customers",
+			link: "/students",
 			badge: 0,
 		},
 		{
-			name: "Inventory",
+			name: "News Update",
 			icon: "Folder",
 			badge: 0,
-			link: "/inventory",
-		},
-		{
-			name: "Conversations",
-			icon: "Chat",
-			link: "/conversations",
-			badge: 16,
-		},
-		{
-			name: "settings",
-			icon: "Setting",
-			badge: 0,
-			link: "/settings",
-		},
+			link: "/news",
+		}
 	];
 
 	return (
@@ -67,10 +55,10 @@ const SidebarLayout = ({className = "", minimizeSidebar, setMinimizeSidebar, onH
 				<Link to="/" className="flex items-center gap-1 w-fit">
 					<Logo />
 					<p
-						className={`font-poppins font-bold text-3xl text-[#45464E] ${
+						className={`font-outfit font-bold text-xl text-[#45464E] ${
 							minimizeSidebar ? "hidden" : "flex"
 						}`}>
-						Metrix
+						OAU Health Centre
 					</p>
 				</Link>
 
@@ -97,7 +85,7 @@ const SidebarLayout = ({className = "", minimizeSidebar, setMinimizeSidebar, onH
 								<span className={`w-8 transition duration-500`}>
 									<Iconly
 										name={link.icon}
-										set={link.link === pathname ? "bulk" : "light"}
+										set={link.link === pathname ? "bold" : "light"}
 										primaryColor={link.link === pathname ? "#fff" : COLORS.icon.dark}
 									/>
 								</span>
@@ -112,7 +100,7 @@ const SidebarLayout = ({className = "", minimizeSidebar, setMinimizeSidebar, onH
 										{link.name}
 									</p>
 									{link.badge > 0 && (
-										<span className="rounded-full w-8 h-8 p-1 text-sm items-center justify-center flex aspect-square bg-secondary text-black">
+										<span className="rounded-full w-8 h-8 p-1 text-sm items-center justify-center flex aspect-square bg-secondary text-white">
 											{link.badge}
 										</span>
 									)}
@@ -127,17 +115,6 @@ const SidebarLayout = ({className = "", minimizeSidebar, setMinimizeSidebar, onH
 				<div className={`rounded-2xl cursor-pointer items-center w-fit p-4 bg-accent-primary flex gap-4`}>
 					<Headphones />
 					<p className={`${minimizeSidebar ? "hidden" : "flex"}`}>Contact Support</p>
-				</div>
-
-				<div className="rounded-2xl cursor-pointer w-fit p-4 bg-accent-secondary flex flex-col gap-2">
-					<div className="flex gap-4 items-center">
-						<Gift />
-						<p className={`${minimizeSidebar ? "hidden" : "flex"}`}>Contact Support</p>
-					</div>
-					<div className={`text-gray-500 items-center gap-6 flex ${minimizeSidebar ? "hidden" : "flex"}`}>
-						<p>Upgrade your account</p>
-						<ChevronRight size={"small"} />
-					</div>
 				</div>
 
 				<div

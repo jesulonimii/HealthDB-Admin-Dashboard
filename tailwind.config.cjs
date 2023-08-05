@@ -13,7 +13,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'poppins': ["Poppins"],
+      'outfit': ["Outfit"],
       'sans': ["Inter" ],
     },
     extend: {

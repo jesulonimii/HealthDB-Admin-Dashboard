@@ -8,7 +8,7 @@ import {COLORS} from "@utils";
 import CustomButton from "@ui/forms/CustomButton.tsx";
 import {FaceSmileIcon} from "@heroicons/react/24/outline";
 import MessageDateGroupIndicator from "@src/(dashboard)/conversations/views/MessageDateGroupIndicator.tsx";
-import ProductCard from "@src/(dashboard)/home/views/ProductCard.tsx";
+import AppointmentInfoCard from "@src/(dashboard)/home/views/AppointmentInfoCard.tsx";
 import moment from "moment";
 import MessageItem from "@src/(dashboard)/conversations/views/MessageItem.tsx";
 
@@ -41,7 +41,7 @@ function MessageView({chats_list, current_chat, className}) {
 					<AvatarImage className="w-12" src={current_chat.image} />
 
 					<div className="flex flex-col gap-2">
-						<p className="font-poppins font-medium">Jane Doe</p>
+						<p className="font-outfit font-medium">Jane Doe</p>
 						<div className="flex gap-4">
 							<span className="flex gap-2 items-center">
 								<span

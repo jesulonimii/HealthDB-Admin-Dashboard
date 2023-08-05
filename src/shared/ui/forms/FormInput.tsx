@@ -20,7 +20,7 @@ const FormInput = (props: FormInputProps) => {
 		startIcon && "pl-12"
 	} ${
 		endIcon && "pr-12"
-	} outline-0 focus:ring-2 border border-gray-200 dark:border-0 ring-primary transition-200 font-poppins bg-opacity-20 rounded-lg w-full`;
+	} outline-0 focus:ring-2 border border-gray-200 dark:border-0 ring-primary transition-200 font-outfit bg-opacity-20 rounded-lg w-full`;
 
 
 
@@ -28,8 +28,8 @@ const FormInput = (props: FormInputProps) => {
 		return (
 			<div className="my-4 w-full">
 				<div className="flex gap-2">
-					<p className="font-poppins font-medium text-black dark:text-gray-500">{label}</p>
-					{description && <em className="font-poppins text-gray-500 dark:text-gray-700">(*{description})</em>}
+					<p className="font-outfit font-medium text-black dark:text-gray-500">{label}</p>
+					{description && <em className="font-outfit text-gray-500 dark:text-gray-700">(*{description})</em>}
 				</div>
 				<div className="relative flex w-full items-center">
 					<div

@@ -1,15 +1,17 @@
+import axios from "axios";
+
 export const COLORS = {
     // => primary
-    primary: "#5570F1",
-    secondary: "#FFCC91",
-    ["primary-50"] : "#97A5EB",
-    ["primary-dark"] : "#152b91",
-    ["secondary-50"] : "#FFCC917C",
+    primary: "#010066",
+    secondary: "#d2a616",
+    ["primary-dark"] : "#010134",
+    ["primary-50"] : "#01006651",
+    ["secondary-50"] : "#d2a61651",
 
 
     accent : {
-        primary: "#5E63661A",
-        secondary: "#fff5e9"
+        primary: "#01006617",
+        secondary: "#d2a61617"
     },
 
     // => status colors
@@ -31,3 +33,26 @@ export const COLORS = {
 
 };
 
+export const PERIOD_FILTER = [
+    {name: "This Week", value: "1", icon: ""},
+    {name: "Last Week", value: "2", icon: ""},
+    {name: "This Month", value: "3", icon: ""},
+    {name: "This Year", value: "4", icon: ""},
+];
+
+export const cleanUrl = (url) => {
+    const uri =  encodeURIComponent(url)
+    return uri.replaceAll("/", "%2F");
+}
+
+
+export const callApi = async (config) => {
+    try {
+        const { data } = await axios({ ...config, timeout: 20000 });
+        //console.log("axios-data@callApi: ", data);
+        return data;
+    } catch (error) {
+        //console.error(error);
+        return error.response.data;
+    }
+};

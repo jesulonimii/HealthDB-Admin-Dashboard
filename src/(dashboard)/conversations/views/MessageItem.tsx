@@ -1,4 +1,4 @@
-import ProductCard from "@src/(dashboard)/home/views/ProductCard.tsx";
+import AppointmentInfoCard from "@src/(dashboard)/home/views/AppointmentInfoCard.tsx";
 import React from "react";
 import moment from "moment/moment";
 
@@ -13,7 +13,7 @@ function MessageItem({message}) {
 		<div className={`w-full my-4 ${message.type==="sent" && "float-right" }`}>
 			<div className={`w-full gap-4 flex flex-col ${message.type === "sent" && "items-end"}`}>
 				{
-					attachments?.productInfo && <ProductCard item={attachments?.productInfo} className="w-[50%]" />
+					attachments?.productInfo && <AppointmentInfoCard item={attachments?.productInfo} className="w-[50%]" />
 				}
 
 				<MessageBox {...message} type={message.type} />

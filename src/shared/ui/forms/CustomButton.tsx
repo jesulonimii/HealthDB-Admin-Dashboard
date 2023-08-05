@@ -47,7 +47,7 @@ const CustomButton = (props: CustomButtonProps) => {
 	const classes = twMerge(
 		` hover:ring-2 ${variance[variant]} ${
 			disabled && "cursor-not-allowed"
-		} py-2 px-4 font-[500] flex justify-center items-center gap-1 text-[12px] cursor-pointer rounded-xl font-poppins relative overflow-hidden capitalize transition duration-500 ${className}`
+		} py-2 px-4 font-[500] flex justify-center items-center gap-1 text-[12px] cursor-pointer rounded-xl font-outfit relative overflow-hidden capitalize transition duration-500 ${className}`
 	);
 
 	return (
@@ -59,7 +59,7 @@ const CustomButton = (props: CustomButtonProps) => {
 					{endIcon && <span className="ml-2 h-5 w-5">{endIcon && endIcon}</span>}
 				</div>
 			)}
-			{loading ? <LoadingSpinner color={"black"} className="dark:text-white" /> : null}
+			{loading ? <LoadingSpinner color={"white"} className="dark:text-white" /> : null}
 		</button>
 	);
 };
