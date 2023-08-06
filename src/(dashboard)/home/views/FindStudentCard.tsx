@@ -53,7 +53,7 @@ function FindStudentCard({}) {
 
 			<div className="flex flex-col gap-2 py-12 md:px-36 w-full items-center">
 
-				<p className="text-2xl font-outfit font-bold">
+				<p className="text-2xl md:text-center font-outfit font-bold">
 					Find Student Health Centre Information
 				</p>
 

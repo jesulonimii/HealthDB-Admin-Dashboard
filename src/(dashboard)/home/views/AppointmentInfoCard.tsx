@@ -36,9 +36,9 @@ function AppointmentInfoCard({ appointment_details, className }: productCardProp
 			</div>
 
 			<div className={`w-[40%]  h-full gap-2 justify-center items-end flex flex-col`}>
-				<p className="text-sm text-gray-500 text-end h-[33%]">{moment(appointment_details.date_time).format("Do MMM, YYYY")}</p>
+				<p className="text-sm text-gray-500 text-end h-[50%]">{moment(appointment_details.date_time).format("Do MMM, YYYY")}</p>
 				<span
-					className={`h-[33%] font-medium bg-opacity-20 px-3 w-fit flex justify-center rounded-lg bg-primary text-primary`}>
+					className={`h-[50%] font-medium bg-opacity-20 px-3 w-fit flex justify-center rounded-lg bg-primary text-primary`}>
 					{moment(appointment_details.date_time).format("hh:mm a")}
 				</span>
 			</div>
