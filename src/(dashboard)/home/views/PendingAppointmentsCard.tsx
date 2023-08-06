@@ -37,9 +37,9 @@ function PendingAppointmentsCard({}) {
 
 			{booked_appointments.length > 0 ? (
 				<div className="flex flex-col gap-2 mt-4">
-					{booked_appointments.map((item, index) => {
+					{/* {booked_appointments.map((item, index) => {
 						return <AppointmentInfoCard appointment_details={item} key={index} />;
-					})}
+					})} */}
 				</div>
 			) : status === "loading" ? (
 				<div className="h-[80vh] w-full flex justify-center items-center">

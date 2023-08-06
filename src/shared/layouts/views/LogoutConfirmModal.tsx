@@ -36,7 +36,7 @@ const LogoutConfirmModal = ({className = "", show, setShow}) => {
 				</div>
 
 				<CustomButton loading={isLoading} className="bg-status-error w-full mx-1" onClick={() => {}}>
-					Log Out
+					<a href="/login">Log Out</a>
 				</CustomButton>
 			</div>
 		</div>

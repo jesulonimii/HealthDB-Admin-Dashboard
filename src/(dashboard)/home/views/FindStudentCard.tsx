@@ -105,7 +105,7 @@ const StudentCard = ({ studentData }: StudentCardProps) => {
 							{personal_info?.first_name} {personal_info?.last_name}
 						</p>
 						<span className="flex gap-2">
-							<p className="text-gray-500 text-sm">{user_id.toUpperCase()}</p>
+							<p className="text-gray-500 text-sm">{user_id}</p>
 							<p className="text-gray-500 text-sm">{student?.department}</p>
 						</span>
 					</div>

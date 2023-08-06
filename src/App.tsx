@@ -2,12 +2,13 @@
 
 import DashboardLayout from "@layouts/Dashboard.layout";
 import RouterView from "@shared/router";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { IconlyProvider } from "react-iconly";
 import { COLORS } from "@utils";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
 const queryClient = new QueryClient();
+
+
 
 function App() {
 	return (

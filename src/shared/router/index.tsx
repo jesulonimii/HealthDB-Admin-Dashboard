@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "@src/(dashboard)/home";
 import ConversationPage from "@src/(dashboard)/conversations";
+import Students from '@/src/(dashboard)/students';
 
 function RouterView() {
 	return (
@@ -26,6 +27,11 @@ const routes = [
 		path: '/conversations',
 		component: <ConversationPage/>
 	},
+	{
+		path: '/students',
+		component: <Students/>
+	},
+
 ]
 
 
