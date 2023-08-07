@@ -25,6 +25,7 @@ function App() {
 				secondaryColor={COLORS.accent.secondary}>
 				<BrowserRouter>
 					<UserContext.Provider value={{ user, setUser }}>
+						{/* TODO: remove the '!' after setting up login  */}
 						{!loggedIn ? (
 							<DashboardLayout>
 								<RouterView />
