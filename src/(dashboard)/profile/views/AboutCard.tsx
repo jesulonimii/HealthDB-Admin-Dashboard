@@ -13,21 +13,21 @@ const AboutCard = () => {
             North Houston, Texas, USA
         </p>
       </div>
-      <div className="flex flex-col pt-3 pb-3">
+      <div className="grid grid-cols-1 gap-10 w-full mb-5">
         <div className="flex gap-12">
-            <h1 className='text-blue-500 font-semibold text-[16px]'>SPECIALITY</h1>
+            <h1 className='text-blue-500 font-semibold text-[16px]'>SPECIALITY:</h1>
             <p>Paediatric, Endoscopic, Leparoscopy, Thoracoscopy</p>
         </div>
         <div className="flex gap-12">
-            <h1 className='text-blue-500 font-semibold text-[16px]'>EXPERIENCE</h1>
+            <h1 className='text-blue-500 font-semibold text-[16px]'>EXPERIENCE:</h1>
             <p>22 Years+</p>
         </div>
         <div className="flex gap-12">
-            <h1 className='text-blue-500 font-semibold text-[16px]'>LANGUAGES</h1>
+            <h1 className='text-blue-500 font-semibold text-[16px]'>LANGUAGES:</h1>
             <p>English, Spanish</p>
         </div>
         <div className="flex gap-12">
-            <h1 className='text-blue-500 font-semibold text-[16px]'>TYPES OF</h1>
+            <h1 className='text-blue-500 font-semibold text-[16px]'>TYPES OF:</h1>
             <p>Full Time Physician</p>
 
       </div>
