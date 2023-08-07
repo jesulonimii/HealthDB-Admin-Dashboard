@@ -10,7 +10,6 @@ import { ArrowPathIcon } from "@heroicons/react/24/outline";
 function PendingAppointmentsCard({}) {
 	const [booked_appointments, setBookedAppointments] = useState([]);
 
-
 	const {
 		data: appointmentsData,
 		status,
@@ -31,15 +30,17 @@ function PendingAppointmentsCard({}) {
 
 				{/* @ts-ignore */}
 				<div className="w-fit h-fit" onClick={refetchAppointments}>
-					<ArrowPathIcon className={`w-6 h-6 text-gray-500 cursor-pointer ${status === "loading" && 'animate-spin'}`} />
+					<ArrowPathIcon
+						className={`w-6 h-6 text-gray-500 cursor-pointer ${status === "loading" && "animate-spin"}`}
+					/>
 				</div>
 			</div>
 
 			{booked_appointments.length > 0 ? (
 				<div className="flex flex-col gap-2 mt-4">
-					{/* {booked_appointments.map((item, index) => {
+					{booked_appointments.map((item, index) => {
 						return <AppointmentInfoCard appointment_details={item} key={index} />;
-					})} */}
+					})}
 				</div>
 			) : status === "loading" ? (
 				<div className="h-[80vh] w-full flex justify-center items-center">

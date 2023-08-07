@@ -26,11 +26,13 @@ export const COLORS = {
     // => background colors
     ["bg-main"] : "#fff",
     ["bg-50"]: "#f4f5fa",
+    skeleton: "#6E6E6E49",
+
 
     //=>icons
     icon: {
         dark : "#53545C"
-    }
+    },
 
 };
 

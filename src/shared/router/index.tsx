@@ -5,6 +5,7 @@ import ConversationPage from "@src/(dashboard)/conversations";
 import Students from "@/src/(dashboard)/students";
 import Login from "@src/(auth)/login";
 import Profile from "@/src/(dashboard)/profile";
+import Appointments from "@src/(dashboard)/appointments";
 
 let navigate = (path: string) => {};
 
@@ -33,6 +34,10 @@ const routes = [
 	{
 		path: "/students",
 		component: <Students />,
+	},
+	{
+		path: "/appointments",
+		component: <Appointments />,
 	},
 	{
 		path: "/login",

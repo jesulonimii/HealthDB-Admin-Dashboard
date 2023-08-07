@@ -16,7 +16,7 @@ type FormInputProps = React.ComponentProps<"input"> & {
 const FormInput = (props: FormInputProps) => {
 	const {className = "", startIcon, endIcon, iconClick, label, register, description, startIconClassName, endIconClassName, ...rest} = props;
 
-	const textFieldClass = `bg-bg-main text-black dark:text-gray-400 my-2 dark:autofill:bg-gray-900 autofill:bg-gray-500 p-3 ${
+	const textFieldClass = `bg-gray-300 text-black dark:text-gray-400 my-2 dark:autofill:bg-gray-900 autofill:bg-gray-500 p-3 ${
 		startIcon && "pl-12"
 	} ${
 		endIcon && "pr-12"
