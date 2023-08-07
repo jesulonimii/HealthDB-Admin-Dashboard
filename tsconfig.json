@@ -24,6 +24,8 @@
       "@ui/*": ["./src/shared/ui/*"],
       "@layouts/*": ["./src/shared/layouts/*"],
       "@assets/*": ["./src/shared/assets/*"],
+      "@api": ["./src/shared/api"],
+      "@hooks": ["./src/shared/hooks"],
       "@utils": ["./src/shared/utils"],
       "@context": ["./src/shared/context"]
     }

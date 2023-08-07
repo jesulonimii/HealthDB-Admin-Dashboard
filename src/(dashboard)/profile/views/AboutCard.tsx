@@ -42,11 +42,9 @@ const AboutCard = () => {
             www.webaddress.com
         </p>
         <p className='border-l-4 pl-4 rounded-lg border-blue-500'>
-            +2349023643820, +2349014535322
+            Room 102, Student Wards
             <br />
-            adedokunfemi14@gmail.component
-            <br />
-            www.webaddress.com
+            Health Center, OAU, Ile-Ife, Nigeria
         </p>
       </div>
     </div>

@@ -55,6 +55,8 @@ export const HEX2RGBA = (hex, alpha = 1) => {
     }
 };
 
+//export const API_URL = import.meta.env.VITE_API_URL;
+
 
 export const callApi = async (config) => {
     try {

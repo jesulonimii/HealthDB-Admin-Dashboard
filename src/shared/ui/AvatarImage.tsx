@@ -4,14 +4,15 @@ type AvatarImageProps = {
 	src: string,
 	className?: string,
 	alt? : string,
-	status_indicator?: {online: boolean}  ,
+	status_indicator?: {online: boolean} ,
+	statusIndicatorColor?: string
 };
 
-function AvatarImage({src = "", className = "", alt = "", status_indicator = null, ...rest}: AvatarImageProps) {
+function AvatarImage({src = "", className = "", alt = "", status_indicator = null, statusIndicatorColor, ...rest}: AvatarImageProps) {
 
 
 	const status_color = {
-		true : "bg-primary",
+		true : statusIndicatorColor ? statusIndicatorColor : "bg-primary",
 		false: "bg-gray-400"
 	}
 
