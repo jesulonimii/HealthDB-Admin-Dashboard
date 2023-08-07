@@ -1,6 +1,6 @@
 import { callApi,  } from "@utils";
 
-const API_URL = import.meta.env.API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const GetAppointments = async () => {
 	const config = {
@@ -13,6 +13,8 @@ export const GetAppointments = async () => {
 
 	return await callApi(config);
 };
+
+
 export const DeleteAppointment = async (id) => {
 
 	const config = {

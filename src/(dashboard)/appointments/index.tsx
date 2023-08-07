@@ -11,7 +11,7 @@ import { GetStudentInfo } from "@api";
 import CardLayout from "@ui/CardLayout.tsx";
 import FindStudentCard from "@src/(dashboard)/home/views/FindStudentCard.tsx";
 
-const Appointments = () => {
+const Students = () => {
 	const [query] = useSearchParams();
 	const matric_number = query.get("matric_number") ?? "";
 
@@ -98,4 +98,4 @@ const LoadingSkeleton = () => {
 	);
 };
 
-export default Appointments;
+export default Students;
