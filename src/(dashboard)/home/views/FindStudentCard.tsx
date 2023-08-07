@@ -36,7 +36,6 @@ function FindStudentCard({}) {
 			})
 			.catch((err) => {
 				console.log(err);
-				alert(err);
 				setError(err);
 				setLoading(false);
 			});
