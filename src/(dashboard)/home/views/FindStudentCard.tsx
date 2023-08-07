@@ -1,7 +1,7 @@
 import CardLayout from "@ui/CardLayout.tsx";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { GetUserInfo } from "@shared/api";
+import { GetStudentInfo } from "@api";
 import AvatarImage from "@ui/AvatarImage.tsx";
 import { Link } from "react-router-dom";
 import FormInput from "@ui/forms/FormInput.tsx";
@@ -28,7 +28,7 @@ function FindStudentCard({}) {
 		setLoading(true);
 
 		console.log(data);
-		GetUserInfo(data?.matric_number)
+		GetStudentInfo(data?.matric_number)
 			.then((res) => {
 				console.log(res);
 				res.error ? setError(res.error) : setStudent(res);
@@ -86,6 +86,8 @@ type StudentCardProps = {
 			profile_image: string;
 			first_name: string;
 			last_name: string;
+			gender? : string;
+			date_of_birth? : string;
 		};
 	};
 };
@@ -96,7 +98,7 @@ const StudentCard = ({ studentData }: StudentCardProps) => {
 	return (
 		<div className="flex flex-col gap-2 w-full">
 			<p>Found Student:</p>
-			<Link to={`/students?search=${user_id}`}>
+			<Link to={`/students?matric_number=${user_id}`}>
 				<div className="w-full h-[10vh] border border-bg-50 transition duration-300 hover:border-primary bg-bg-50 rounded-lg p-4 gap-2 flex">
 					<AvatarImage src={personal_info?.profile_image} className="h-full" />
 					<div className="w-[80%] gap-2 flex-col">

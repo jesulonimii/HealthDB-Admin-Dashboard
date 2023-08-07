@@ -17,10 +17,12 @@ declare module "@mui/material/styles" {
 	}
 }
 
-const UsedDrugsTable = (props) => {
-	const { className = "" } = props;
 
-	function createData(name, details, form, date) {
+
+
+const UsedDrugsTable = ({ className = "", data : rows = [] }) => {
+
+	/*function createData(name, details, form, date) {
 		return { name, form, details, date };
 	}
 
@@ -28,7 +30,7 @@ const UsedDrugsTable = (props) => {
 		createData("Apo-Ciproflux", "500mg, Apotex industries, twice daily", "Syrup", "12-07-2023"),
 		createData("Acetamonophen", "500mg, Apotex industries, twice daily", "Capsule", "12-07-2023"),
 		createData("Amoxicillin", "500mg, Apotex industries, twice daily", "Intravenous", "12-07-2023"),
-	];
+	];*/
 
 	const MuiTheme = createTheme({
 		typography: {
@@ -78,7 +80,9 @@ const UsedDrugsTable = (props) => {
 										borderRight: 1,
 										borderTop: 1,
 										borderColor: "rgba(141,141,141,0.28)",
-									}}>Date Admnistered</TableCell>
+									}}>
+									Date Admnistered
+								</TableCell>
 							</TableRow>
 						</TableHead>
 						<TableBody>
