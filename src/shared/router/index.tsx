@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "@src/(dashboard)/home";
 import ConversationPage from "@src/(dashboard)/conversations";
 import Students from '@/src/(dashboard)/students';
+import Profile from '@/src/(dashboard)/profile';
 
 function RouterView() {
 	return (
@@ -30,6 +31,10 @@ const routes = [
 	{
 		path: '/students',
 		component: <Students/>
+	},
+	{
+		path: '/profile',
+		component: <Profile/>
 	},
 
 ]
