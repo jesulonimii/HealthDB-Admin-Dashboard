@@ -28,10 +28,10 @@ const MainProfileCard = ({studentData}) => {
 						{moment().diff(studentData?.personal_info?.date_of_birth, "years")}
 					</span>
 				</div>
-				<div className="grid grid-cols-2">
+				{/*<div className="grid grid-cols-2">
 					<span className="w-full text-gray-700 font-bold">Weight:</span>
 					<span className="w-full text-gray-900">-</span>
-				</div>
+				</div>*/}
 			</div>
 		</CardLayout>
 	);

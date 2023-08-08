@@ -8,6 +8,7 @@ import FindStudentCard from "@src/(dashboard)/home/views/FindStudentCard.tsx";
 import MainProfileCard from "../students/views/MainProfileCard";
 import MedicationInformationCard from "@src/(dashboard)/students/views/MedicationInformationCard.tsx";
 import MedicalNotesCard from "@src/(dashboard)/students/views/MedicalNotesCard.tsx";
+import PendingAppointmentsCard from "@src/(dashboard)/home/views/PendingAppointmentsCard.tsx";
 
 type AppointmentDataType = {
 	date_time: string;
@@ -113,8 +114,8 @@ const Appointments = () => {
 		);
 	} else
 		return (
-			<div className="w-full flex h-full items-center justify-center p-36">
-				<FindStudentCard />
+			<div className="w-full flex h-full items-center justify-center py-12 px-36">
+				<PendingAppointmentsCard />
 			</div>
 		);
 };
