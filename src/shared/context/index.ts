@@ -1,7 +1,13 @@
 import { createContext } from "react";
 
 type userContextProps = {
-	user: object;
+	user: {
+		_id: object
+		email: string,
+		role: string,
+		name: string,
+		phone: string
+	};
 	setUser: (user: object) => {};
 };
 

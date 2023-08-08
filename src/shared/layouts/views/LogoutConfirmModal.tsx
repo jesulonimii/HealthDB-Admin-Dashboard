@@ -7,11 +7,12 @@ import {useNavigate} from "react-router-dom";
 import useClickOutside from "@shared/hooks/useClickOutside";
 import {Danger} from "react-iconly";
 import {COLORS} from "@utils";
+import { useAuth } from "@hooks";
 
 const LogoutConfirmModal = ({className = "", show, setShow}) => {
 	const [isLoading, setIsLoading] = useState(false);
 
-	const router = useNavigate();
+	const { Logout } = useAuth()
 
 	const closeModal = () => {
 		setShow(false);
@@ -19,6 +20,11 @@ const LogoutConfirmModal = ({className = "", show, setShow}) => {
 
 	const popover = useRef();
 	useClickOutside(popover, closeModal);
+
+	const handleLogout = () => {
+		Logout({ confirm: false })
+		//window.location.href = "/login"
+	}
 
 	return (
 		<div
@@ -35,8 +41,8 @@ const LogoutConfirmModal = ({className = "", show, setShow}) => {
 					<Danger primaryColor={COLORS.status.error} size={"xlarge"} />
 				</div>
 
-				<CustomButton loading={isLoading} className="bg-status-error w-full mx-1" onClick={() => {}}>
-					<a href="/login">Log Out</a>
+				<CustomButton loading={isLoading} className="bg-status-error w-full mx-1" onClick={handleLogout}>
+					Log Out
 				</CustomButton>
 			</div>
 		</div>

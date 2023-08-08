@@ -7,6 +7,7 @@ import {COLORS} from "@utils";
 import {useState} from "react";
 import UserMenuModal from "@layouts/views/UserMenuModal.tsx";
 import SidebarMenuModal from "@layouts/views/SidebarMenuModal.tsx";
+import { useAuth } from "@hooks";
 
 type HeaderProps = {
 	className?: string;
@@ -16,8 +17,12 @@ const Header = ({className = ""}: HeaderProps) => {
 	const path = useLocation().pathname;
 	const pathname = path.replaceAll("/", "");
 
-	const workspaces = [
-		{name: "Dr. William", value: "1", icon: ""}
+	const {user} = useAuth();
+
+	const userInfo = [
+		{name: `${user?.name}`, value: "1", icon: ""},
+		{name: `Role: ${user?.role}`, value: "2", icon: ""},
+		{name: `Email: ${user?.email}`, value: "2", icon: ""}
 	];
 
 
@@ -33,10 +38,12 @@ const Header = ({className = ""}: HeaderProps) => {
 
 				<div className={`w-full flex flex-row justify-between items-center pt-2 pb-4 ${className}`}>
 					<div className="flex items-center gap-4">
-						<span className="flex md:hidden cursor-pointer" onClick={()=>setShowSidebarMenu(!showSidebarMenu)}>
+						<span
+							className="flex md:hidden cursor-pointer"
+							onClick={() => setShowSidebarMenu(!showSidebarMenu)}>
 							<Category size={"medium"} />
 						</span>
-						<Link to="/" >
+						<Link to="/">
 							<p className="font-bold font-outfit text-2xl capitalize">
 								{pathname === "" ? "dashboard" : pathname}
 							</p>
@@ -45,8 +52,8 @@ const Header = ({className = ""}: HeaderProps) => {
 
 					<div className="w-fit flex justify-center items-center gap-8">
 						<DropdownMenu
-							items={workspaces}
-							currentItem={workspaces[0].name}
+							items={userInfo}
+							currentItem={userInfo[0].name}
 							className="bg-accent-secondary text-black rounded-xl py-2  hidden sm:flex"
 						/>
 
@@ -54,22 +61,22 @@ const Header = ({className = ""}: HeaderProps) => {
 							<Notification set="bold" primaryColor={COLORS.primary} />
 						</div>*/}
 
-						<span onClick={()=>setShowUserMenu(true)}>
+						{/*<span onClick={()=>setShowUserMenu(true)}>
 							<img
 								className="rounded-xl w-18 cursor-pointer"
 								src={"/profile-1.png"}
 								alt={"profile image"}
 							/>
-						</span>
+						</span>*/}
 					</div>
 				</div>
 
-				<div className="border-t flex hidden items-center py-4 gap-2">
+				{/*<div className="border-t flex hidden items-center py-4 gap-2">
 					<Link to={"/"}>
 						<Home set={"bold"} primaryColor={COLORS.primary} size={"small"} />
 					</Link>
 					<div className="text-sm text-gray-500">{path.replaceAll("/", `\u{2800}/\u{2800}`)}</div>
-				</div>
+				</div>*/}
 			</div>
 		</>
 	);

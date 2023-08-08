@@ -2,10 +2,10 @@ import {callApi } from "@utils";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-export const Login = async (id, password) => {
+export const Login = async (email, password) => {
 
 	const payload = {
-		user_id: id.toLowerCase().trim(),
+		email: email.toLowerCase().trim(),
 		password: password.trim(),
 	};
 
@@ -13,7 +13,7 @@ export const Login = async (id, password) => {
 
 	const config = {
 		method: "post",
-		url: `${API_URL}/auth/login`,
+		url: `${API_URL}/admin/login`,
 		data: payload,
 		headers: {
 			"Content-Type": "application/json"

@@ -27,7 +27,7 @@ function FindStudentCard({}) {
 	const findStudent = (data) => {
 		setLoading(true);
 
-		console.log(data);
+		//console.log(data);
 		GetStudentInfo(data?.matric_number)
 			.then((res) => {
 				console.log(res);

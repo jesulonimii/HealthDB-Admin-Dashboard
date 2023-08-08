@@ -5,19 +5,19 @@ import { QUERY_KEYS } from "@utils";
 import useLocalStorage from "./useLocalStorage";
 import { router } from "@shared/router";
 
-const useAuth = () => {
 
-	const { user, setUser } = useContext(UserContext);
+const useAuth = () => {
+	const { user , setUser }  = useContext(UserContext);
 	const { saveToStorage, removeFromStorage } = useLocalStorage();
 
-
-	const Login = async (id: string, password: string) => {
-		return LoginUser(id, password).then((r) => {
+	const Login = async (email: string, password: string) => {
+		return LoginUser(email, password).then((r) => {
 			if (!r.error) {
+				delete r.password
 				setUser(r);
 				saveToStorage(QUERY_KEYS.user_data, r)
 					.then((res) => {
-						router.push("/home");
+						router.push("/");
 					})
 					.catch((e) => {
 						alert("An error occurred while saving to storage");
@@ -25,6 +25,7 @@ const useAuth = () => {
 					});
 			} else {
 				console.log(r.error);
+				return new Error(r.error);
 			}
 		});
 	};
@@ -44,22 +45,19 @@ const useAuth = () => {
 	};
 
 	const loggingOut = () => {
-		router.push("/login");
-		setUser(null);
-		//TODO: Display error with toast
 
-		//toast({ message: "Logged out successfully" });
-		removeFromStorage(QUERY_KEYS.user_data).then((r) => console.log(r));
+		removeFromStorage(QUERY_KEYS.user_data)
+		setUser(null);
+		//router.push("/login");
+		window.location.replace("/login");
+		//TODO: Display logout success with toast
+
 	};
 
 	const Logout = (options: { confirm?: boolean } = { confirm: true }) => {
 		if (options?.confirm) {
-
 			confirm("Are you sure you want to logout?") == true ? loggingOut() : console.log("Logout cancelled!");
-
-		}
-
-		else loggingOut();
+		} else loggingOut();
 	};
 
 	return {

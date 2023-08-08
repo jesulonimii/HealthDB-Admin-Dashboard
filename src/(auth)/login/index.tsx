@@ -1,92 +1,83 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Logo from '@/src/shared/ui/Logo';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import * as React from "react";
+import { useEffect, useState } from "react";
+import CardLayout from "@ui/CardLayout.tsx";
+import FormInput from "@ui/forms/FormInput.tsx";
+import CustomButton from "@ui/forms/CustomButton.tsx";
+import Logo from "@ui/Logo.tsx";
+import { AtSymbolIcon, LockClosedIcon } from "@heroicons/react/24/outline";
+import { useForm } from "react-hook-form";
+import { useAuth, useLocalStorage } from "@hooks";
+import { router } from "@shared/router";
+import { QUERY_KEYS } from "@utils";
+
+export default function LoginScreen() {
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState(null);
+	const { getFromStorage } = useLocalStorage()
+
+	const loggedIn = getFromStorage(QUERY_KEYS.user_data) || null
+
+	const { Login, setUser } = useAuth();
+
+	if (loggedIn) {
+		setUser(loggedIn);
+		window.location.href = "/"
+	}
 
 
-const defaultTheme = createTheme();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
 
-export default function SignIn() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+	const onSubmit = (data) => {
+		setIsLoading(true);
 
-  return (
-    <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs" className='bg-white rounded-lg pb-2'>
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, width: 110,
-            height: 100, bgcolor: 'white' }}
-          >
-            <Logo className='w-[100px]'/>
-          </Avatar>
-          <Typography component="h1" variant="h5" className='font-semibold'>
-            Health DB
-          </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Login
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-            </Grid>
-          </Box>
-        </Box>
-      </Container>
-    </ThemeProvider>
-  );
+		const email = data.email.toLowerCase().trim();
+		const password = data.password.trim();
+
+		Login(email, password).then((error) => {
+			setIsLoading(false);
+			if (error) {
+				console.log(error.toString());
+				setError(error.toString());
+			}
+		});
+	};
+
+	return (
+		<CardLayout className="w-[35%] h-fit min-h-[50vh] items-center justify-center gap-1 p-12">
+			<Logo className="w-24 my-4" />
+			<h3 className="text-2xl w-[80%] text-center font-outfit font-semibold">
+				OAU Health Centre Database System
+			</h3>
+
+			<h3 className="text-center mt-8 mb-4 text-gray-700">
+				Enter your staff credentials to login to the dashboard.
+			</h3>
+
+			{/* @ts-ignore */}
+			{error && <p className="bg-red-100 text-center text-red-500 p-4 rounded-lg">{error}</p>}
+
+			<form className="w-full" onSubmit={handleSubmit(onSubmit)}>
+				<FormInput
+					startIcon={<AtSymbolIcon />}
+					placeholder="Enter staff email"
+					register={register("email")}
+					type="email" />
+
+				<FormInput
+					startIcon={<LockClosedIcon />}
+					placeholder="Enter Password"
+					register={register("password")}
+					type="password" />
+
+				<CustomButton loading={isLoading} className="w-full py-4 mt-4">
+					{" "}
+					Login{" "}
+				</CustomButton>
+			</form>
+		</CardLayout>
+	);
 }
