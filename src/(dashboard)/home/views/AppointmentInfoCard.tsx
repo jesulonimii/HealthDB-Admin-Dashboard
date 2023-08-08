@@ -4,21 +4,49 @@ import AvatarImage from "@ui/AvatarImage.tsx";
 import moment from "moment";
 import {Link} from "react-router-dom";
 
-type productCardProps = {
+type appointmentCardProps = {
 	appointment_details: {
 		date_time: string,
 		appointment_id: string,
 		student_info: {
-			first_name: string,
-			last_name: string,
-			matric_number: string,
-			profile_image: string,
+			personal_info: {
+				first_name: string,
+				last_name: string,
+				profile_image: string,
+				date_of_birth: string,
+				gender: string,
+			},
+			student: {
+				level: string,
+				department: string,
+				faculty: string,
+				matric_number: string,
+			},
+			contact_info: {
+				address: string,
+				phone: string,
+				email: string,
+			},
+			medical_history: {
+				medical_notes: string,
+				previous_medications: [],
+				hospitalizations: [],
+				allergies: string,
+				last_visit: string,
+			},
+			health_centre_registration: {
+				status: string,
+				message: string,
+			},
+			user_id: string,
+			emergency_contacts: any,
+			appointments: any,
 		}
 	}
 	className? : string
 };
 
-function AppointmentInfoCard({ appointment_details, className }: productCardProps) {
+function AppointmentInfoCard({ appointment_details, className }: appointmentCardProps) {
 
 	 const {student_info} = appointment_details;
 
@@ -26,12 +54,12 @@ function AppointmentInfoCard({ appointment_details, className }: productCardProp
 
 	return (
 		<Link to={`/appointments?id=${appointment_details.appointment_id}`} className={twMerge(`flex gap-4 cursor-pointer hover:bg-gray-50 p-3 border-b justify-between items-center ${className}`)}>
-			<AvatarImage src={student_info.profile_image} className="w-12 h-12" />
+			<AvatarImage src={student_info?.personal_info?.profile_image} className="w-12 h-12" />
 
 			<div className="w-[50%] gap-1 justify-center flex flex-col">
-				<p className="font-medium text-lg font-outfit">{`${student_info.first_name} ${student_info.last_name}`}</p>
+				<p className="font-medium text-lg font-outfit">{`${student_info.personal_info?.first_name} ${student_info.personal_info?.last_name}`}</p>
 				<p className="text-gray-700">
-					{student_info.matric_number}
+					{student_info.student?.matric_number}
 				</p>
 			</div>
 

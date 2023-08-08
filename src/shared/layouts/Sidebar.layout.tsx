@@ -31,7 +31,7 @@ const SidebarLayout = ({className = "", minimizeSidebar, setMinimizeSidebar, onH
 			name: "Appointments",
 			icon: "Calendar",
 			link: "/appointments",
-			badge: 3,
+			badge: 0,
 		},
 		{
 			name: "Students ",
@@ -39,12 +39,12 @@ const SidebarLayout = ({className = "", minimizeSidebar, setMinimizeSidebar, onH
 			link: "/students",
 			badge: 0,
 		},
-		{
+		/*{
 			name: "News Update",
 			icon: "Folder",
 			badge: 0,
 			link: "/news",
-		}
+		}*/
 	];
 
 	return (
@@ -112,10 +112,10 @@ const SidebarLayout = ({className = "", minimizeSidebar, setMinimizeSidebar, onH
 			</div>
 
 			<div className="flex flex-col gap-6">
-				<div className={`rounded-2xl cursor-pointer items-center w-fit p-4 bg-accent-primary flex gap-4`}>
+				<Link className={`rounded-2xl cursor-pointer items-center w-fit p-4 bg-accent-primary flex gap-4`} to={'mailto:jesulonimii.will@gmail.com'}>
 					<Headphones />
 					<p className={`${minimizeSidebar ? "hidden" : "flex"}`}>Contact Support</p>
-				</div>
+				</Link>
 
 				<div
 					className={`flex cursor-pointer ${minimizeSidebar && "justify-center"} items-center gap-2`}

@@ -3,6 +3,7 @@ const QUERY_KEYS = {
 	appointments: "appointments",
 	user_data: "user-data",
 	student_data: "student-data",
+	appointment_data: "appointment-data",
 };
 
 export default QUERY_KEYS;

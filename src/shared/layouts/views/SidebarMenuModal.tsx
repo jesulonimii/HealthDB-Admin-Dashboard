@@ -27,35 +27,23 @@ const SidebarMenuModal = ({className = "", show, setShow}) => {
 			badge: 0,
 		},
 		{
-			name: "Orders",
-			icon: "Bag",
-			link: "/orders",
-			badge: 3,
-		},
-		{
-			name: "Customers",
-			icon: "TwoUsers",
-			link: "/customers",
+			name: "Appointments",
+			icon: "Calendar",
+			link: "/appointments",
 			badge: 0,
 		},
 		{
-			name: "Inventory",
+			name: "Students ",
+			icon: "TwoUsers",
+			link: "/students",
+			badge: 0,
+		},
+		/*{
+			name: "News Update",
 			icon: "Folder",
 			badge: 0,
-			link: "/inventory",
-		},
-		{
-			name: "Conversations",
-			icon: "Chat",
-			link: "/conversations",
-			badge: 16,
-		},
-		{
-			name: "settings",
-			icon: "Setting",
-			badge: 0,
-			link: "/settings",
-		},
+			link: "/news",
+		}*/
 	];
 
 	return (
