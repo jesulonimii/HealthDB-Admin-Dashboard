@@ -41,3 +41,6 @@ export const EditUserMedicalInfo = async (data: { user_id: any; additional_medic
 
 	return await callApi(config);
 };
+
+
+

@@ -14,8 +14,20 @@ export const GetAppointments = async () => {
 	return await callApi(config);
 };
 
+export const GetAppointmentInfo = async (appointment_id : string) => {
+	const config = {
+		method: "get",
+		url: `${API_URL}/appointments/fetch?id=${appointment_id}`,
+		headers: {
+			"Content-Type": "application/json",
+		},
+	};
 
-export const DeleteAppointment = async (id) => {
+	return await callApi(config);
+};
+
+
+export const DeleteAppointment = async (id:string) => {
 
 	const config = {
 		method: "delete",

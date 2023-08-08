@@ -1,33 +1,91 @@
 import React, { useState } from "react";
-import AllergiesCard from "./views/AllergiesCard";
-import MedicationInformationCard from "./views/MedicationInformationCard.tsx";
-import GeneralProfileCard from "./views/GeneralProfileCard";
-import MainProfileCard from "./views/MainProfileCard";
-import MedicalNotesCard from "./views/MedicalNotesCard.tsx";
 import { useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { QUERY_KEYS } from "@utils";
-import { GetStudentInfo } from "@api";
+import { GetAppointmentInfo } from "@api";
 import CardLayout from "@ui/CardLayout.tsx";
 import FindStudentCard from "@src/(dashboard)/home/views/FindStudentCard.tsx";
+import MainProfileCard from "../students/views/MainProfileCard";
+import MedicationInformationCard from "@src/(dashboard)/students/views/MedicationInformationCard.tsx";
+import MedicalNotesCard from "@src/(dashboard)/students/views/MedicalNotesCard.tsx";
 
-const Students = () => {
+type AppointmentDataType = {
+	date_time: string;
+	appointment_id: string;
+	student_info: {
+		personal_info: {
+			first_name: string;
+			last_name: string;
+			profile_image: string;
+			date_of_birth: string;
+			gender: string;
+		};
+		student: {
+			level: string;
+			department: string;
+			faculty: string;
+			matric_number: string;
+		};
+		contact_info: {
+			address: string;
+			phone: string;
+			email: string;
+		};
+		medical_history: {
+			medical_notes: string;
+			previous_medications: object;
+			hospitalizations: object;
+			allergies: string;
+			last_visit: string;
+		};
+		health_centre_registration: {
+			status: string;
+			message: string;
+		};
+		user_id: string;
+		emergency_contacts: any;
+		appointments: any;
+	};
+};
+
+const defaultAppointmentData = {
+	appointment_id: "",
+	date_time: "",
+	student_info: {
+		appointments: undefined,
+		contact_info: { address: "", email: "", phone: "" },
+		emergency_contacts: undefined,
+		health_centre_registration: { message: "", status: "" },
+		medical_history: {
+			allergies: "",
+			hospitalizations: [],
+			last_visit: "",
+			medical_notes: "",
+			previous_medications: [],
+		},
+		personal_info: { date_of_birth: "", first_name: "", gender: "", last_name: "", profile_image: "" },
+		student: { department: "", faculty: "", level: "", matric_number: "" },
+		user_id: "",
+	},
+};
+
+const Appointments = () => {
 	const [query] = useSearchParams();
-	const matric_number = query.get("matric_number") ?? "";
+	const appointment_id = query.get("id") ?? "";
 
-	const [studentData, setStudentData] = useState({});
+	const [appointmentData, setAppointmentData] = useState<AppointmentDataType>(defaultAppointmentData);
 
-	if (matric_number) {
+	if (appointment_id) {
 		const {
 			data,
 			status,
 			error,
 			refetch: refetchStudentData,
 		} = useQuery({
-			queryKey: [`${QUERY_KEYS.student_data}-${matric_number}`, matric_number],
-			queryFn: () => GetStudentInfo(matric_number),
+			queryKey: [`${QUERY_KEYS.appointment_data}-${appointment_id}`, appointment_id],
+			queryFn: () => GetAppointmentInfo(appointment_id),
 			onSuccess: (data) => {
-				setStudentData(data);
+				setAppointmentData(data);
 				//console.log(data);
 			},
 		});
@@ -40,17 +98,13 @@ const Students = () => {
 					<div className="flex w-full p-12 md:p-4 h-fit pb-16 min-h-[80vh] flex-col gap-14 flex-grow">
 						<section className="w-full gap-6 flex flex-col md:flex-row h-full relative">
 							<section className="w-full md:w-[25%] md:sticky top-[10%] h-fit gap-6 flex flex-col">
-								<MainProfileCard studentData={studentData} />
-
-								<AllergiesCard studentData={studentData} />
+								<MainProfileCard studentData={appointmentData?.student_info} />
 							</section>
 
 							<div className="w-full flex flex-col pb-36 gap-6 md:w-[75%] flex-grow min-h-full">
-								<GeneralProfileCard studentData={studentData} />
+								<MedicalNotesCard studentData={appointmentData?.student_info} />
 
-								<MedicalNotesCard studentData={studentData} />
-
-								<MedicationInformationCard studentData={studentData} />
+								<MedicationInformationCard studentData={appointmentData?.student_info} />
 							</div>
 						</section>
 					</div>
@@ -96,4 +150,4 @@ const LoadingSkeleton = () => {
 	);
 };
 
-export default Students;
+export default Appointments;
