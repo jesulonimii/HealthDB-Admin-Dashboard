@@ -1,14 +1,20 @@
 import React, { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { QUERY_KEYS } from "@utils";
 import { GetAppointmentInfo } from "@api";
 import CardLayout from "@ui/CardLayout.tsx";
-import FindStudentCard from "@src/(dashboard)/home/views/FindStudentCard.tsx";
 import MainProfileCard from "../students/views/MainProfileCard";
 import MedicationInformationCard from "@src/(dashboard)/students/views/MedicationInformationCard.tsx";
 import MedicalNotesCard from "@src/(dashboard)/students/views/MedicalNotesCard.tsx";
 import PendingAppointmentsCard from "@src/(dashboard)/home/views/PendingAppointmentsCard.tsx";
+import PreviousDoctorReports from "@src/(dashboard)/appointments/views/PreviousDoctorReports.tsx";
+import WriteDoctorReport from "@src/(dashboard)/appointments/views/WriteDoctorReport.tsx";
+import moment from "moment";
+import CustomButton from "@ui/forms/CustomButton.tsx";
+import IconStyled from "@ui/IconStyled.tsx";
+import { PencilIcon } from "@heroicons/react/24/outline";
+import PrescriptionCard from "@src/(dashboard)/appointments/views/PrescriptionCard.tsx";
 
 type AppointmentDataType = {
 	date_time: string;
@@ -33,9 +39,10 @@ type AppointmentDataType = {
 			email: string;
 		};
 		medical_history: {
-			medical_notes: string;
-			previous_medications: object;
-			hospitalizations: object;
+			additional_medical_info: string;
+			doctors_notes: Array<object>;
+			previous_medications: Array<object>;
+			hospitalizations: Array<object>;
 			allergies: string;
 			last_visit: string;
 		};
@@ -61,7 +68,8 @@ const defaultAppointmentData = {
 			allergies: "",
 			hospitalizations: [],
 			last_visit: "",
-			medical_notes: "",
+			additional_medical_info: "",
+			doctors_notes: [],
 			previous_medications: [],
 		},
 		personal_info: { date_of_birth: "", first_name: "", gender: "", last_name: "", profile_image: "" },
@@ -100,24 +108,53 @@ const Appointments = () => {
 						<section className="w-full gap-6 flex flex-col md:flex-row h-full relative">
 							<section className="w-full md:w-[25%] md:sticky top-[10%] h-fit gap-6 flex flex-col">
 								<MainProfileCard studentData={appointmentData?.student_info} />
+
+								<CardLayout className="gap-4">
+									<div className="flex flex-col gap-2">
+										<p>Appointment id:</p>
+										<p className="font-semibold">{appointmentData?.appointment_id}</p>
+									</div>
+
+									<div className="flex flex-col gap-2">
+										<p>Booked:</p>
+										<p className="font-semibold">
+											{moment(appointmentData?.date_time).format("Do MMM, YYYY [by] hh:mm A")}
+										</p>
+									</div>
+
+									<Link to={`/students?matric_number=${appointmentData?.student_info?.user_id}`} className="w-full">
+										<CustomButton variant="outlined" className="mt-2 w-full	">
+											View Student Profile
+										</CustomButton>
+									</Link>
+
+									<CustomButton className="bg-status-error">End Appointment</CustomButton>
+								</CardLayout>
 							</section>
 
 							<div className="w-full flex flex-col pb-36 gap-6 md:w-[75%] flex-grow min-h-full">
 								<MedicalNotesCard studentData={appointmentData?.student_info} />
 
 								<MedicationInformationCard studentData={appointmentData?.student_info} />
+
+								<PreviousDoctorReports studentData={appointmentData?.student_info} />
+
+								<PrescriptionCard studentData={appointmentData?.student_info} />
+
+								<WriteDoctorReport studentData={appointmentData?.student_info} />
 							</div>
 						</section>
 					</div>
 				)}
 			</>
 		);
-	} else
+	} else {
 		return (
 			<div className="w-full flex h-full items-center justify-center py-12 px-36">
 				<PendingAppointmentsCard />
 			</div>
 		);
+	}
 };
 
 const LoadingSkeleton = () => {

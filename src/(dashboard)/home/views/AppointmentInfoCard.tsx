@@ -59,7 +59,7 @@ function AppointmentInfoCard({ appointment_details, className }: appointmentCard
 			<div className="w-[50%] gap-1 justify-center flex flex-col">
 				<p className="font-medium text-lg font-outfit">{`${student_info.personal_info?.first_name} ${student_info.personal_info?.last_name}`}</p>
 				<p className="text-gray-700">
-					{student_info.student?.matric_number}
+					{student_info.student?.matric_number.toUpperCase()}
 				</p>
 			</div>
 
