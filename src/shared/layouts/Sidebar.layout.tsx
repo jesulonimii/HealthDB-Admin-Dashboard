@@ -31,7 +31,7 @@ const SidebarLayout = ({className = "", minimizeSidebar, setMinimizeSidebar, onH
 			name: "Appointments",
 			icon: "Calendar",
 			link: "/appointments",
-			badge: 3,
+			badge: 0,
 		},
 		{
 			name: "Students ",
