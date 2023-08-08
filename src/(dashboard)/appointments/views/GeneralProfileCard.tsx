@@ -46,9 +46,7 @@ const GeneralProfileCard = ({studentData}) => {
 				{/*Info Group 3*/}
 				<div className="flex w-full flex-col gap-1">
 					<h1 className="text-gray-400">Email</h1>
-					<div className="font-semibold whitespace-normal">
-						{studentData?.contact_info?.email}
-					</div>
+					<p className="font-semibold">{studentData?.contact_info?.email}</p>
 				</div>
 				<div className="flex w-full flex-col gap-1">
 					<h1 className="text-gray-400">Phone Number</h1>

@@ -11,60 +11,58 @@ import { GetStudentInfo } from "@api";
 import CardLayout from "@ui/CardLayout.tsx";
 import FindStudentCard from "@src/(dashboard)/home/views/FindStudentCard.tsx";
 
-const Appointments = () => {
+const Students = () => {
 	const [query] = useSearchParams();
 	const matric_number = query.get("matric_number") ?? "";
 
-
 	const [studentData, setStudentData] = useState({});
 
-	const {
-		data,
-		status,
-		error,
-		refetch: refetchStudentData,
-	} = useQuery({
-		queryKey: [`${QUERY_KEYS.student_data}-${matric_number}`, matric_number],
-		queryFn: () => GetStudentInfo(matric_number),
-		onSuccess: (data) => {
-			setStudentData(data);
-			console.log(data);
-		},
-	});
+	if (matric_number) {
+		const {
+			data,
+			status,
+			error,
+			refetch: refetchStudentData,
+		} = useQuery({
+			queryKey: [`${QUERY_KEYS.student_data}-${matric_number}`, matric_number],
+			queryFn: () => GetStudentInfo(matric_number),
+			onSuccess: (data) => {
+				setStudentData(data);
+				//console.log(data);
+			},
+		});
 
-	if (matric_number) return (
-		<>
-			{status === "loading" ? (
-				<LoadingSkeleton />
-			) : (
-				<div className="flex w-full p-12 md:p-4 h-fit pb-16 min-h-[80vh] flex-col gap-14 flex-grow">
-					<section className="w-full gap-6 flex flex-col md:flex-row h-full relative">
-						<section className="w-full md:w-[25%] md:sticky top-[10%] h-fit gap-6 flex flex-col">
-							<MainProfileCard studentData={studentData} />
+		return (
+			<>
+				{status === "loading" ? (
+					<LoadingSkeleton />
+				) : (
+					<div className="flex w-full p-12 md:p-4 h-fit pb-16 min-h-[80vh] flex-col gap-14 flex-grow">
+						<section className="w-full gap-6 flex flex-col md:flex-row h-full relative">
+							<section className="w-full md:w-[25%] md:sticky top-[10%] h-fit gap-6 flex flex-col">
+								<MainProfileCard studentData={studentData} />
 
-							<AllergiesCard studentData={studentData} />
+								<AllergiesCard studentData={studentData} />
+							</section>
+
+							<div className="w-full flex flex-col pb-36 gap-6 md:w-[75%] flex-grow min-h-full">
+								<GeneralProfileCard studentData={studentData} />
+
+								<MedicalNotesCard studentData={studentData} />
+
+								<MedicationInformationCard studentData={studentData} />
+							</div>
 						</section>
-
-						<div className="w-full flex flex-col pb-36 gap-6 md:w-[75%] flex-grow min-h-full">
-							<GeneralProfileCard studentData={studentData} />
-
-							<MedicalNotesCard studentData={studentData} />
-
-							<MedicationInformationCard studentData={studentData} />
-						</div>
-					</section>
-				</div>
-			)}
-		</>
-	)
-
-	else return (
-		<div className="w-full flex h-full items-center justify-center p-36">
-			<FindStudentCard />
-		</div>
-	)
-
-
+					</div>
+				)}
+			</>
+		);
+	} else
+		return (
+			<div className="w-full flex h-full items-center justify-center p-36">
+				<FindStudentCard />
+			</div>
+		);
 };
 
 const LoadingSkeleton = () => {
@@ -98,4 +96,4 @@ const LoadingSkeleton = () => {
 	);
 };
 
-export default Appointments;
+export default Students;

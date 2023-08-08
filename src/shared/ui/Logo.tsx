@@ -9,7 +9,7 @@ type LogoProps = {
 
 const Logo = ({className = "w-16"}: LogoProps) => {
 
-	return <img src={LogoPng} className={className}  alt="logo" />
+	return <img src={LogoPng} className={`w-16 ${className}`} alt="logo" />
 };
 
 export default Logo;

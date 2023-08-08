@@ -1,20 +1,37 @@
 // @ts-nocheck
 
 import DashboardLayout from "@layouts/Dashboard.layout";
-import RouterView from "@shared/router";
-import { BrowserRouter } from "react-router-dom";
+import RouterView, { router } from "@shared/router";
+import { BrowserRouter, useLocation } from "react-router-dom";
 import { IconlyProvider } from "react-iconly";
-import { COLORS } from "@utils";
+import { COLORS, QUERY_KEYS } from "@utils";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useAuth } from "./shared/hooks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UserContext } from "@context";
+import { useLocalStorage } from "@hooks";
 
 const queryClient = new QueryClient();
 
 function App() {
-	const { user: loggedIn } = useAuth();
-	const [user, setUser] = useState(null);
+
+	const { getFromStorage } = useLocalStorage()
+	const [user, setUser] = useState( getFromStorage(QUERY_KEYS.user_data) || null);
+
+	const pathname = window.location.pathname.split("/")[1].trim();
+
+	useEffect(() => {
+
+		console.log("user details", user);
+
+
+		if (user) {
+			setUser(user);
+		} else if (!user && pathname !== "login") {
+			window.location.href = "/login"
+		}
+	}, [])
+
 
 	return (
 		<QueryClientProvider client={queryClient}>
@@ -26,12 +43,12 @@ function App() {
 				<BrowserRouter>
 					<UserContext.Provider value={{ user, setUser }}>
 						{/* TODO: remove the '!' after setting up login  */}
-						{!loggedIn ? (
+						{(pathname !== "login" ) ? (
 							<DashboardLayout>
 								<RouterView />
 							</DashboardLayout>
 						) : (
-							<div className="bg-bg-50 min-h-screen flex flex-col">
+							<div className="bg-bg-50 min-h-screen flex flex-col items-center justify-center">
 								<RouterView />
 							</div>
 						)}

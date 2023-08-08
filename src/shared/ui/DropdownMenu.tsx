@@ -85,7 +85,7 @@ function DropdownMenu(props : DropdownMenuProps) {
 						return (
 							<MenuItem
 								key={index}
-								className={"z-[5000] capitalize"}
+								className={"z-[5000]"}
 								sx={{
 									zIndex: 5000,
 									display: "flex",

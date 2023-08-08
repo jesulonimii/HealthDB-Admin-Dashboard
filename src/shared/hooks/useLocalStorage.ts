@@ -1,7 +1,7 @@
 
 
 const useLocalStorage = () => {
-	const saveToStorage = async (key, value) => {
+	const saveToStorage = (key, value) => {
 		try {
 			const makeString = JSON.stringify(value);
 			localStorage.setItem(key, makeString);
@@ -12,7 +12,7 @@ const useLocalStorage = () => {
 		}
 	};
 
-	const getFromStorage = async (key) => {
+	const getFromStorage =  (key) => {
 		try {
 			const jsonValue = localStorage.getItem(key);
 			return jsonValue != null ? JSON.parse(jsonValue) : null;
@@ -21,7 +21,7 @@ const useLocalStorage = () => {
 		}
 	};
 
-	const removeFromStorage = async (key) => {
+	const removeFromStorage = (key) => {
 		try {
 			localStorage.removeItem(key);
 			return { response: "removed." };

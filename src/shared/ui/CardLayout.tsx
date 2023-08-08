@@ -10,8 +10,9 @@ type CardLayoutProps = {
 const CardLayout = ({ className, title, children }: CardLayoutProps) => {
 	return (
 		<div className={twMerge(`rounded-2xl p-5 w-full min-h-24 bg-white flex flex-col ${className} `)}>
-			<h2 className="text-primary font-medium font-outfit text-xl mb-8">{title}</h2>
-
+			{
+				title && <h2 className="text-primary font-medium font-outfit text-xl mb-8">{title}</h2>
+			}
 
 			{children}
 		</div>
