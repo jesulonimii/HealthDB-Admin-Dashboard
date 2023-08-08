@@ -32,7 +32,7 @@ const Header = ({className = ""}: HeaderProps) => {
 				<SidebarMenuModal show={showSidebarMenu} setShow={setShowSidebarMenu} />
 
 				<div className={`w-full flex flex-row justify-between items-center pt-2 pb-4 ${className}`}>
-					<div className="flex items-center gap-4">
+					<	div className="flex items-center gap-4">
 						<span className="flex md:hidden cursor-pointer" onClick={()=>setShowSidebarMenu(!showSidebarMenu)}>
 							<Category size={"medium"} />
 						</span>

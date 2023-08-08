@@ -5,6 +5,7 @@ import ConversationPage from "@src/(dashboard)/conversations";
 import Students from "@/src/(dashboard)/students";
 import Login from "@src/(auth)/login";
 import Profile from "@/src/(dashboard)/profile";
+import Notification from "@/src/(dashboard)/orders";
 
 let navigate = (path: string) => {};
 
@@ -41,6 +42,10 @@ const routes = [
 	{
 		path: "/profile",
 		component: <Profile />,
+	},
+	{
+		path: "/orders",
+		component: <Notification />,
 	},
 ];
 
