@@ -15,6 +15,7 @@ import CustomButton from "@ui/forms/CustomButton.tsx";
 import IconStyled from "@ui/IconStyled.tsx";
 import { PencilIcon } from "@heroicons/react/24/outline";
 import PrescriptionCard from "@src/(dashboard)/appointments/views/PrescriptionCard.tsx";
+import { useAuth } from "@hooks";
 
 type AppointmentDataType = {
 	date_time: string;
@@ -81,6 +82,8 @@ const defaultAppointmentData = {
 const Appointments = () => {
 	const [query] = useSearchParams();
 	const appointment_id = query.get("id") ?? "";
+	const {userRole} = useAuth();
+
 
 	const [appointmentData, setAppointmentData] = useState<AppointmentDataType>(defaultAppointmentData);
 
@@ -132,17 +135,27 @@ const Appointments = () => {
 								</CardLayout>
 							</section>
 
-							<div className="w-full flex flex-col pb-36 gap-6 md:w-[75%] flex-grow min-h-full">
-								<MedicalNotesCard studentData={appointmentData?.student_info} />
+							{
+								(userRole === "doctor" || userRole === "admin") ? (
+									<div className="w-full flex flex-col pb-36 gap-6 md:w-[75%] flex-grow min-h-full">
+										<MedicalNotesCard studentData={appointmentData?.student_info} />
 
-								<MedicationInformationCard studentData={appointmentData?.student_info} />
+										<MedicationInformationCard studentData={appointmentData?.student_info} />
 
-								<PreviousDoctorReports studentData={appointmentData?.student_info} />
+										<PreviousDoctorReports studentData={appointmentData?.student_info} />
 
-								<PrescriptionCard studentData={appointmentData?.student_info} />
+										<PrescriptionCard appointmentData={appointmentData} />
 
-								<WriteDoctorReport studentData={appointmentData?.student_info} />
-							</div>
+										<WriteDoctorReport appointmentData={appointmentData} />
+									</div>
+								) : (
+									<div className="flex items-center justify-center w-full md:w-[75%]">
+										You need to be a doctor to access this page.
+									</div>
+									)
+							}
+
+
 						</section>
 					</div>
 				)}

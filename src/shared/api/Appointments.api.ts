@@ -23,9 +23,9 @@ export const GetAppointmentInfo = async (appointment_id : string) => {
 		},
 	};
 
+
 	return await callApi(config);
 };
-
 
 export const DeleteAppointment = async (id:string) => {
 
@@ -41,3 +41,32 @@ export const DeleteAppointment = async (id:string) => {
 	return true;
 };
 
+export const SendPrescription = async ({ student_id, ...rest }: any) => {
+	const config = {
+		method: "post",
+		url: `${API_URL}/appointments/prescriptions/create?user_id=${student_id}`,
+		headers: {
+			"Content-Type": "application/json",
+		},
+		data: {
+			name :  rest.medication_name,
+			details : rest.medication_details,
+			date: rest.date,
+		},
+	};
+
+	return await callApi(config);
+};
+
+export const CreateDoctorReport = async ({ student_id, ...rest }: any) => {
+	const config = {
+		method: "post",
+		url: `${API_URL}/appointments/medical-reports/create?user_id=${student_id}`,
+		headers: {
+			"Content-Type": "application/json",
+		},
+		data: rest,
+	};
+
+	return await callApi(config);
+};

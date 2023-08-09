@@ -1,33 +1,66 @@
 import CardLayout from "@ui/CardLayout.tsx";
-import React from "react";
+import React, { useState } from "react";
 import FormInput from "@ui/forms/FormInput.tsx";
 import FormTextArea from "@ui/forms/FormTextArea.tsx";
 import CustomButton from "@ui/forms/CustomButton.tsx";
+import { useForm } from "react-hook-form";
+import { useAuth } from "@hooks";
+import { CreateDoctorReport } from "@shared/api/Appointments.api.ts";
 
-function WriteDoctorReport({ studentData }) {
-	let doctors_notes = studentData?.medical_history?.doctors_notes;
+function WriteDoctorReport({ appointmentData }) {
 
-	doctors_notes = [
-		{
-			date: "2023-07-16",
-			doctor: "Dr. Sanya",
-			report: "Patient came in with recurring abdominal pain, particularly after meals. Physical exam revealed tenderness in the upper abdomen. Endoscopy confirmed a gastric ulcer. Prescribed proton pump inhibitors (PPIs) and advised dietary changes. Follow-up scheduled in 4 weeks.",
-		},
-		{
-			date: "2023-08-02",
-			doctor: "Dr. Femi",
-			report: "Patient presented with fever, chills, headache, and body aches. Blood tests confirmed Plasmodium falciparum parasites. Prescribed Artemether-Lumefantrine for 3 days. Advised rest, hydration, and mosquito precautions. Follow-up scheduled for August 10, 2023.",
-		},
-	];
+	const {register, handleSubmit} = useForm()
+	const {user}= useAuth()
+	const [hasWrittenReport, setHasWrittenReport] = useState(false)
+	const [isLoading, setIsLoading] = useState(false)
+
+
+	function onSubmit(data: any) {
+		setIsLoading(true)
+
+		const payload = {
+			...data,
+			date: new Date().toISOString(),
+			doctor: user?.name,
+			appointment_id: appointmentData?.appointment_id,
+			student_id: appointmentData?.student_info?.user_id,
+		};
+
+		CreateDoctorReport(payload).then((res) => {
+			setIsLoading(false)
+			if (!res?.error){
+				console.log(res);
+				//TODO: toast.success("report sent successfully")
+				setHasWrittenReport(true)
+			}
+			else alert(res?.error)
+
+
+		}).catch((err) => {
+			console.log(err);
+		})
+
+	}
 
 	return (
-		<CardLayout title="Create Report for this visit." className="p-8">
+		<CardLayout title="Create Report For This Visit." className="p-8">
 
-			<FormTextArea className="h-[40vh]" placeholder="Write your report here..." />
 
-			<div className="flex w-full justify-end">
-				<CustomButton className="mt-2 max-w-[30%] float-right">Submit Report</CustomButton>
-			</div>
+			{
+				!hasWrittenReport ? (
+					<form onSubmit={handleSubmit(onSubmit)}>
+						<FormTextArea register={register("report")} required className="h-[40vh]" placeholder="Write your report here..." />
+
+						<div className="flex w-full justify-end">
+							<CustomButton className="mt-2 w-full md:w-[20%] float-right">Submit Report</CustomButton>
+						</div>
+					</form>
+				) : (
+					<div className="flex items-center justify-center">
+						<p>Medical report recorded.</p>
+					</div>
+				)
+			}
 
 
 		</CardLayout>

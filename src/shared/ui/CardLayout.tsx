@@ -14,7 +14,7 @@ const CardLayout = ({ className, title, children }: CardLayoutProps) => {
 				title && <h2 className="text-primary font-medium font-outfit text-xl mb-8">{title}</h2>
 			}
 
-			{children}
+			{ children && children }
 		</div>
 	);
 };

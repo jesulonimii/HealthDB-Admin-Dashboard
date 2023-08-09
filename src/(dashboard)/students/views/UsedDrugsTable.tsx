@@ -8,6 +8,7 @@ import {
 	TableRow,
 	ThemeProvider,
 } from "@mui/material";
+import moment from "moment";
 
 declare module "@mui/material/styles" {
 	interface Theme {
@@ -114,7 +115,7 @@ const UsedDrugsTable = ({ className = "", data : rows = [] }) => {
 									<TableCell
 										className="text-gray-800 dark:text-white capitalize"
 										sx={{ borderColor: "rgba(141,141,141,0.28)" }}>
-										{row.date}
+										{moment(row.date).format("DD-MM-YYYY")}
 									</TableCell>
 								</TableRow>
 							))}

@@ -2,10 +2,11 @@ import {Link, useLocation} from "react-router-dom";
 import {twMerge} from "tailwind-merge";
 import LogoutConfirmModal from "./views/LogoutConfirmModal";
 import Logo from "@shared/ui/Logo";
-import {useState} from "react";
+import { useEffect, useState } from "react";
 import {ChevronLeft, ChevronRight, Iconly, Logout} from "react-iconly";
 import {COLORS} from "@utils";
 import {Gift, Headphones} from "@assets/icons";
+import { useAuth } from "@hooks";
 
 type sidebarProps = {
 	className : string,
@@ -17,10 +18,12 @@ type sidebarProps = {
 
 const SidebarLayout = ({className = "", minimizeSidebar, setMinimizeSidebar, onHover, onHoverLeave}) => {
 	const pathname = useLocation().pathname;
+	const {userRole} = useAuth();
 
 	const [showHomeMenu, setShowHomeMenu] = useState(false);
+	const [links, setLinks] = useState([])
 
-	const links = [
+	const linksBank = [
 		{
 			name: "Dashboard",
 			icon: "Category",
@@ -34,18 +37,37 @@ const SidebarLayout = ({className = "", minimizeSidebar, setMinimizeSidebar, onH
 			badge: 0,
 		},
 		{
-			name: "Students ",
+			name: "Students",
 			icon: "TwoUsers",
 			link: "/students",
 			badge: 0,
 		},
-		/*{
-			name: "News Update",
-			icon: "Folder",
+		{
+			name: "Pharmacy",
+			icon: "Buy",
 			badge: 0,
-			link: "/news",
-		}*/
+			link: "/pharmacy",
+		}
 	];
+
+	useEffect(() => {
+
+		if (userRole === "admin") {
+			setLinks(linksBank)
+		} else if (userRole === "doctor") {
+			setLinks(linksBank.filter(link => link.name !== "Pharmacy"))
+		}
+		else if (userRole === "pharmacist") {
+			setLinks(linksBank.filter(link => link.name !== "Appointments" && link.name !== "Students" ))
+		}
+		else if (userRole === "attendant") {
+			setLinks(linksBank.filter(link => link.name !== "Appointments" && link.name !== "Pharmacy"))
+		}
+
+
+	},[])
+
+
 
 	return (
 		<div className={twMerge(

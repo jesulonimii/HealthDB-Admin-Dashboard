@@ -4,7 +4,7 @@ import React from "react";
 function PreviousDoctorReports({ studentData }) {
 	let doctors_notes = studentData?.medical_history?.doctors_notes;
 
-	doctors_notes = [
+	/*doctors_notes = [
 		{
 			date: "2023-07-16",
 			doctor: "Dr. Sanya",
@@ -15,7 +15,7 @@ function PreviousDoctorReports({ studentData }) {
 			doctor: "Dr. Femi",
 			report: "Patient presented with fever, chills, headache, and body aches. Blood tests confirmed Plasmodium falciparum parasites. Prescribed Artemether-Lumefantrine for 3 days. Advised rest, hydration, and mosquito precautions. Follow-up scheduled for August 10, 2023.",
 		},
-	];
+	];*/
 
 	return (
 		<CardLayout title="Previous Doctors' Reports" className="p-8">
