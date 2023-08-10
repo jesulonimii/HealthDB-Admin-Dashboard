@@ -5,6 +5,7 @@ import Students from "@/src/(dashboard)/students";
 import Login from "@src/(auth)/login";
 import Profile from "@/src/(dashboard)/profile";
 import Appointments from "@src/(dashboard)/appointments";
+import Pharmacy from "@/src/(dashboard)/pharmacy";
 
 let navigate = (path: string) => {};
 
@@ -46,10 +47,10 @@ const routes = [
 		path: "/profile",
 		component: <Profile />,
 	},
-	{
-		path: "/orders",
-		component: <Notification />,
-	},
+	// {
+	// 	path: "/orders",
+	// 	component: <Notification />,
+	// },
 ];
 
 export const router = {
