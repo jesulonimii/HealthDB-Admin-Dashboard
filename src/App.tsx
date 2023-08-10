@@ -10,10 +10,14 @@ import { useAuth } from "./shared/hooks";
 import { useEffect, useState } from "react";
 import { UserContext } from "@context";
 import { useLocalStorage } from "@hooks";
+import io from 'socket.io-client'
+import SocketProvider from "@shared/context/SocketContext.tsx";
+
 
 const queryClient = new QueryClient();
 
 function App() {
+
 
 	const { getFromStorage } = useLocalStorage()
 	const [user, setUser] = useState( getFromStorage(QUERY_KEYS.user_data) || null);
@@ -40,20 +44,22 @@ function App() {
 				stroke="regular"
 				primaryColor={COLORS.icon.dark}
 				secondaryColor={COLORS.accent.secondary}>
-				<BrowserRouter>
-					<UserContext.Provider value={{ user, setUser }}>
-						{/* TODO: remove the '!' after setting up login  */}
-						{(pathname !== "login" ) ? (
-							<DashboardLayout>
-								<RouterView />
-							</DashboardLayout>
-						) : (
-							<div className="bg-bg-50 min-h-screen flex flex-col items-center justify-center">
-								<RouterView />
-							</div>
-						)}
-					</UserContext.Provider>
-				</BrowserRouter>
+				<SocketProvider>
+					<BrowserRouter>
+						<UserContext.Provider value={{ user, setUser }}>
+							{/* TODO: remove the '!' after setting up login  */}
+							{(pathname !== "login" ) ? (
+								<DashboardLayout>
+									<RouterView />
+								</DashboardLayout>
+							) : (
+								<div className="bg-bg-50 min-h-screen flex flex-col items-center justify-center">
+									<RouterView />
+								</div>
+							)}
+						</UserContext.Provider>
+					</BrowserRouter>
+				</SocketProvider>
 			</IconlyProvider>
 		</QueryClientProvider>
 	);

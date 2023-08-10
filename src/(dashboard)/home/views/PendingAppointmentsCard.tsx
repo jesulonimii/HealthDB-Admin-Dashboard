@@ -2,10 +2,11 @@ import CardLayout from "@ui/CardLayout.tsx";
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import AppointmentInfoCard from "@src/(dashboard)/home/views/AppointmentInfoCard.tsx";
-import { COLORS, QUERY_KEYS } from "@utils";
+import { COLORS, QUERY_KEYS, SOCKET_EVENT_KEYS } from "@utils";
 import { GetAppointments } from "@shared/api";
 import LoadingSpinner from "@ui/LoadingSpinner.tsx";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
+import { useSocket } from "@shared/context/SocketContext.tsx";
 
 function PendingAppointmentsCard({}) {
 	const [booked_appointments, setBookedAppointments] = useState([]);
@@ -21,6 +22,12 @@ function PendingAppointmentsCard({}) {
 		onSuccess: (data) => {
 			setBookedAppointments(data);
 		},
+	});
+
+	const { socket } = useSocket();
+
+	socket.on(SOCKET_EVENT_KEYS.appointments_update, (message: any) => {
+		refetchAppointments().then(r => console.log("Refetched appointments"));
 	});
 
 	return (

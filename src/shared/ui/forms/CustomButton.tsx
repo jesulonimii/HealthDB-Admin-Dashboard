@@ -35,7 +35,7 @@ const CustomButton = (props: CustomButtonProps) => {
 
 	const variance = {
 		contained: `${border && "border"} bg-primary text-white `,
-		outlined: "text-primary border border-primary",
+		outlined: "text-gray-700 border border-gray-300",
 		text: "text-primary hover:ring-1",
 	};
 
@@ -47,7 +47,7 @@ const CustomButton = (props: CustomButtonProps) => {
 	const classes = twMerge(
 		` hover:ring-2 ${variance[variant]} ${
 			disabled && "cursor-not-allowed"
-		} py-2 px-4 font-[500] flex justify-center items-center gap-1 text-[12px] cursor-pointer rounded-xl font-outfit relative overflow-hidden capitalize transition duration-500 ${className}`
+		} py-3 px-4 font-[500] flex justify-center items-center gap-1 text-[12px] cursor-pointer rounded-xl font-outfit relative overflow-hidden capitalize transition duration-500 ${className}`
 	);
 
 	return (

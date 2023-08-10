@@ -21,7 +21,7 @@ const Header = ({className = ""}: HeaderProps) => {
 
 	const userInfo = [
 		{name: `${user?.name}`, value: "1", icon: ""},
-		{name: `Role: ${user?.role}`, value: "2", icon: ""},
+		{name: `Role: ${user?.role?.substring(0,1).toUpperCase() + user?.role?.substring(1)}`, value: "2", icon: ""},
 		{name: `Email: ${user?.email}`, value: "2", icon: ""}
 	];
 

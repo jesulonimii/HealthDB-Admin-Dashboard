@@ -1,14 +1,17 @@
-import {useRef, useState} from "react";
+import { useEffect, useRef, useState } from "react";
 import {twMerge} from "tailwind-merge";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import useClickOutside from "@shared/hooks/useClickOutside";
 import {Iconly} from "react-iconly";
 import {COLORS} from "@utils";
+import { useAuth } from "@hooks";
 
 const SidebarMenuModal = ({className = "", show, setShow}) => {
 	const [isLoading, setIsLoading] = useState(false);
 
 	const router = useNavigate();
+	const {userRole} = useAuth();
+
 
 	const pathname = useLocation().pathname;
 
@@ -19,7 +22,9 @@ const SidebarMenuModal = ({className = "", show, setShow}) => {
 	const popover = useRef();
 	useClickOutside(popover, closeModal);
 
-	const links = [
+	const [links, setLinks] = useState([])
+
+	const linksBank = [
 		{
 			name: "Dashboard",
 			icon: "Category",
@@ -33,18 +38,37 @@ const SidebarMenuModal = ({className = "", show, setShow}) => {
 			badge: 0,
 		},
 		{
-			name: "Students ",
+			name: "Students",
 			icon: "TwoUsers",
 			link: "/students",
 			badge: 0,
 		},
-		/*{
-			name: "News Update",
-			icon: "Folder",
+		{
+			name: "Pharmacy",
+			icon: "Buy",
 			badge: 0,
-			link: "/news",
-		}*/
+			link: "/pharmacy",
+		}
 	];
+
+	useEffect(() => {
+
+		if (userRole === "admin") {
+			setLinks(linksBank)
+		} else if (userRole === "doctor") {
+			setLinks(linksBank.filter(link => link.name !== "Pharmacy"))
+		}
+		else if (userRole === "pharmacist") {
+			setLinks(linksBank.filter(link => link.name !== "Appointments" && link.name !== "Students"))
+		}
+		else if (userRole === "attendant") {
+			setLinks(linksBank.filter(link => link.name !== "Appointments" && link.name !== "Pharmacy"))
+		}
+
+
+	},[])
+
+
 
 	return (
 		<div

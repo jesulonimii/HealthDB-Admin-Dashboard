@@ -1,12 +1,10 @@
 import React from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Home from "@src/(dashboard)/home";
-import ConversationPage from "@src/(dashboard)/conversations";
 import Students from "@/src/(dashboard)/students";
 import Login from "@src/(auth)/login";
 import Profile from "@/src/(dashboard)/profile";
-import Notification from "@/src/(dashboard)/orders";
-import AppointmentsW from "@/src/(dashboard)/students";
+import Appointments from "@src/(dashboard)/appointments";
 
 let navigate = (path: string) => {};
 
@@ -29,8 +27,8 @@ const routes = [
 		component: <Home />,
 	},
 	{
-		path: "/conversations",
-		component: <ConversationPage />,
+		path: "/pharmacy",
+		component: <Pharmacy />,
 	},
 	{
 		path: "/students",

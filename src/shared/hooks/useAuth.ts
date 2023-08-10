@@ -10,22 +10,26 @@ const useAuth = () => {
 	const { user , setUser }  = useContext(UserContext);
 	const { saveToStorage, removeFromStorage } = useLocalStorage();
 
+	const userRole = user?.role;
+
 	const Login = async (email: string, password: string) => {
 		return LoginUser(email, password).then((r) => {
-			if (!r.error) {
-				delete r.password
+			if (!r?.error) {
+				delete r?.password
 				setUser(r);
+				router.push("/")
 				saveToStorage(QUERY_KEYS.user_data, r)
 					.then((res) => {
-						router.push("/");
+						//router.push("/");
+						//window.location.replace("/")
 					})
 					.catch((e) => {
 						alert("An error occurred while saving to storage");
 						console.log("error-saving-to-storage", e);
 					});
 			} else {
-				console.log(r.error);
-				return new Error(r.error);
+				console.log(r?.error);
+				return new Error(r?.error);
 			}
 		});
 	};
@@ -65,6 +69,7 @@ const useAuth = () => {
 		Logout,
 		Signup,
 		user,
+		userRole,
 		setUser,
 	};
 };

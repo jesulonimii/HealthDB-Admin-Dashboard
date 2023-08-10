@@ -29,7 +29,7 @@ const StyledIcon = ({icon = "home", color = "#d54b05", bgColor = "#d31616", clas
 
 			{typeof icon === "string" ? (
 				<IconTag
-					primaryColor={color}
+					primarycolor={color}
 					style={{
 						color: HEX2RGBA(color || bgColor),
 					}}

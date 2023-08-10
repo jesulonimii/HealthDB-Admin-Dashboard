@@ -8,6 +8,7 @@ import {
 	TableRow,
 	ThemeProvider,
 } from "@mui/material";
+import moment from "moment";
 
 declare module "@mui/material/styles" {
 	interface Theme {
@@ -61,18 +62,18 @@ const UsedDrugsTable = ({ className = "", data : rows = [] }) => {
 									}}>
 									Medication Name
 								</TableCell>
-								<TableCell
+								{/*<TableCell
 									className="dark:text-white font-outfit"
 									sx={{ borderTop: 1, borderColor: "rgba(141,141,141,0.28)" }}>
 									Medication Type
-								</TableCell>
+								</TableCell>*/}
 								<TableCell
 									className="dark:text-white font-outfit w-[40%]"
 									sx={{
 										borderTop: 1,
 										borderColor: "rgba(141,141,141,0.28)",
 									}}>
-									Medication Details
+									Additional Medication Details
 								</TableCell>
 								<TableCell
 									className="dark:text-white font-outfit"
@@ -101,20 +102,20 @@ const UsedDrugsTable = ({ className = "", data : rows = [] }) => {
 										sx={{ borderColor: "rgba(141,141,141,0.28)" }}>
 										{row.name}
 									</TableCell>
-									<TableCell
+									{/*<TableCell
 										className="text-gray-800 dark:text-white capitalize"
 										sx={{ borderColor: "rgba(141,141,141,0.28)" }}>
 										{row.form}
-									</TableCell>
+									</TableCell>*/}
 									<TableCell
-										className="text-gray-800 dark:text-white capitalize w-[40%]"
+										className="text-gray-800 dark:text-white capitalize w-[60%]"
 										sx={{ borderColor: "rgba(141,141,141,0.28)" }}>
 										{row.details}
 									</TableCell>
 									<TableCell
 										className="text-gray-800 dark:text-white capitalize"
 										sx={{ borderColor: "rgba(141,141,141,0.28)" }}>
-										{row.date}
+										{moment(row.date).format("DD-MM-YYYY")}
 									</TableCell>
 								</TableRow>
 							))}
