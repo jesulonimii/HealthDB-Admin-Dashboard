@@ -1,4 +1,4 @@
-import DoctorPrescribtionCard from "./views/DoctorPrescribtionCard";
+import DoctorPrescribtionCard from "./views/StudentInforCard";
 import StudentInfoCard from "./views/StudentInfoCard";
 
 
