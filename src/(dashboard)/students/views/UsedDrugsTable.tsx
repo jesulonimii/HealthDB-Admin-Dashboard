@@ -82,14 +82,14 @@ const UsedDrugsTable = ({ className = "", data : rows = [] }) => {
 										borderTop: 1,
 										borderColor: "rgba(141,141,141,0.28)",
 									}}>
-									Date Admnistered
+									Date Administered
 								</TableCell>
 							</TableRow>
 						</TableHead>
 						<TableBody>
-							{rows.map((row) => (
+							{rows.map((row, index) => (
 								<TableRow
-									key={row.name}
+									key={index}
 									className="border-0"
 									sx={{
 										border: 0,

@@ -24,7 +24,7 @@ function PrescriptionCard({ appointmentData }) {
 		}
 
 
-		SendPrescription(payload).then((res) => {
+		SendPrescription(appointmentData.appointment_id, payload).then((res) => {
 			setIsLoading(false)
 
 			if (!res?.error){

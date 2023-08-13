@@ -41,7 +41,7 @@ export const DeleteAppointment = async (id:string) => {
 	return true;
 };
 
-export const SendPrescription = async ({ student_id, ...rest }: any) => {
+export const SendPrescription = async (appointment_id : string, { student_id, ...rest }: any) => {
 	const config = {
 		method: "post",
 		url: `${API_URL}/appointments/prescriptions/create?user_id=${student_id}`,
@@ -52,6 +52,7 @@ export const SendPrescription = async ({ student_id, ...rest }: any) => {
 			name :  rest.medication_name,
 			details : rest.medication_details,
 			date: rest.date,
+			appointment_id: appointment_id
 		},
 	};
 

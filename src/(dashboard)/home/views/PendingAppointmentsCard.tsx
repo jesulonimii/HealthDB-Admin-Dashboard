@@ -24,7 +24,7 @@ function PendingAppointmentsCard({}) {
 		},
 	});
 
-	const { socket } = useSocket();
+	const socket = useSocket();
 
 	socket.on(SOCKET_EVENT_KEYS.appointments_update, (message: any) => {
 		refetchAppointments().then(r => console.log("Refetched appointments"));
@@ -52,7 +52,7 @@ function PendingAppointmentsCard({}) {
 			) : status === "loading" ? (
 				<div className="h-[80vh] w-full flex justify-center items-center">
 					<LoadingSpinner className="my-4" color={COLORS.primary} />
-					<p className="text-gray-500 text-center">Loading Health Center News</p>
+					<p className="text-gray-500 text-center">Loading Pending appointments</p>
 				</div>
 			) : (
 				<div className="h-[80vh] w-full flex justify-center items-center">
