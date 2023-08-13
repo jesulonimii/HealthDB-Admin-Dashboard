@@ -4,7 +4,7 @@ import { SOCKET_EVENT_KEYS } from "@utils";
 import { useLocalStorage } from "@hooks";
 
 const socketAddress = import.meta.env.VITE_API_URL;
-const socket = io(socketAddress)
+const socket = io(socketAddress,  {'reconnection': false})
 export const SocketContext = createContext(null);
 
 export const useSocket = () => {
