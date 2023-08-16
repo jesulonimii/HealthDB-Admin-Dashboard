@@ -6,10 +6,11 @@ import CustomButton from "@ui/forms/CustomButton.tsx";
 import DropdownMenu from "@ui/DropdownMenu.tsx";
 import { useForm } from "react-hook-form";
 import { SendPrescription } from "@shared/api/Appointments.api.ts";
+import toast from "react-hot-toast";
 
 function PrescriptionCard({ appointmentData }) {
 
-	const { register, handleSubmit, formState: { errors } } = useForm();
+	const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
 	const [hasPrescribedMedication, setHasPrescribedMedication ] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
@@ -29,8 +30,9 @@ function PrescriptionCard({ appointmentData }) {
 
 			if (!res?.error){
 				console.log(res);
-				//TODO: toast.success("Prescription sent successfully")
-				setHasPrescribedMedication(true)
+				toast.success("Prescription sent successfully")
+				reset()
+				//setHasPrescribedMedication(true)
 			}
 			else alert(res?.error)
 

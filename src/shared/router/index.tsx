@@ -6,6 +6,7 @@ import Login from "@src/(auth)/login";
 import Profile from "@/src/(dashboard)/profile";
 import Appointments from "@src/(dashboard)/appointments";
 import Pharmacy from "@src/(dashboard)/pharmacy";
+import News from "@src/(dashboard)/news";
 
 let navigate = (path: string) => {};
 
@@ -46,6 +47,10 @@ const routes = [
 	{
 		path: "/profile",
 		component: <Profile />,
+	},
+	{
+		path: "/news",
+		component: <News />,
 	},
 ];
 

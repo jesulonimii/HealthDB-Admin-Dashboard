@@ -42,5 +42,29 @@ export const EditUserMedicalInfo = async (data: { user_id: any; additional_medic
 	return await callApi(config);
 };
 
+export const SendNotification = async ({ student_id, ...rest }: any) => {
+	const config = {
+		method: "post",
+		url: `${API_URL}/users/notify?user_id=${student_id}`,
+		headers: {
+			"Content-Type": "application/json",
+		},
+		data: rest,
+	};
+
+	return await callApi(config);
+};
 
 
+export const PublishNews = async (data: any) => {
+	const config = {
+		method: "post",
+		url: `${API_URL}/news/publish`,
+		headers: {
+			"Content-Type": "application/json",
+		},
+		data: data,
+	};
+
+	return await callApi(config);
+};

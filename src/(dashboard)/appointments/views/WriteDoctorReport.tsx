@@ -6,6 +6,7 @@ import CustomButton from "@ui/forms/CustomButton.tsx";
 import { useForm } from "react-hook-form";
 import { useAuth } from "@hooks";
 import { CreateDoctorReport } from "@shared/api/Appointments.api.ts";
+import toast from "react-hot-toast";
 
 function WriteDoctorReport({ appointmentData }) {
 
@@ -30,7 +31,7 @@ function WriteDoctorReport({ appointmentData }) {
 			setIsLoading(false)
 			if (!res?.error){
 				console.log(res);
-				//TODO: toast.success("report sent successfully")
+				toast.success("Medical report created successfully")
 				setHasWrittenReport(true)
 			}
 			else alert(res?.error)

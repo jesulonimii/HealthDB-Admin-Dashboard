@@ -47,6 +47,12 @@ const SidebarLayout = ({className = "", minimizeSidebar, setMinimizeSidebar, onH
 			icon: "Buy",
 			badge: 0,
 			link: "/pharmacy",
+		},
+		{
+			name: "News",
+			icon: "Edit",
+			badge: 0,
+			link: "/news",
 		}
 	];
 
@@ -55,10 +61,10 @@ const SidebarLayout = ({className = "", minimizeSidebar, setMinimizeSidebar, onH
 		if (userRole === "admin") {
 			setLinks(linksBank)
 		} else if (userRole === "doctor") {
-			setLinks(linksBank.filter(link => link.name !== "Pharmacy"))
+			setLinks(linksBank.filter(link => link.name !== "Pharmacy" && link.name !== "News"))
 		}
 		else if (userRole === "pharmacist") {
-			setLinks(linksBank.filter(link => link.name !== "Appointments" && link.name !== "Students" ))
+			setLinks(linksBank.filter(link => link.name !== "Appointments" && link.name !== "Students" && link.name !== "News" ))
 		}
 		else if (userRole === "attendant") {
 			setLinks(linksBank.filter(link => link.name !== "Appointments" && link.name !== "Pharmacy"))

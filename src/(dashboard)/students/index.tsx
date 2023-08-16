@@ -10,6 +10,7 @@ import { QUERY_KEYS } from "@utils";
 import { GetStudentInfo } from "@api";
 import CardLayout from "@ui/CardLayout.tsx";
 import FindStudentCard from "@src/(dashboard)/home/views/FindStudentCard.tsx";
+import SendNotificationCard from "@src/(dashboard)/students/views/SendNotificationCard.tsx";
 
 const Appointments = () => {
 	const [query] = useSearchParams();
@@ -51,6 +52,8 @@ const Appointments = () => {
 							<MedicalNotesCard studentData={studentData} />
 
 							<MedicationInformationCard studentData={studentData} />
+
+							<SendNotificationCard studentData={studentData} />
 						</div>
 					</section>
 				</div>

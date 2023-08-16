@@ -8,13 +8,14 @@ type FormInputProps = React.ComponentProps<"input"> & {
 	endIcon?: any;
 	iconClick?: any;
 	label?: any;
+	required?: boolean;
 	description?: string;
 	startIconClassName? : string,
 	endIconClassName? : string
 };
 
 const FormInput = (props: FormInputProps) => {
-	const {className = "", startIcon, endIcon, iconClick, label, register, description, startIconClassName, endIconClassName, ...rest} = props;
+	const {className = "", startIcon, endIcon, iconClick, label, required = true, register, description, startIconClassName, endIconClassName, ...rest} = props;
 
 	const textFieldClass = `bg-gray-200 text-black dark:text-gray-400 my-2 dark:autofill:bg-gray-900 autofill:bg-gray-500 p-3 ${
 		startIcon && "pl-12"
@@ -42,8 +43,8 @@ const FormInput = (props: FormInputProps) => {
 					<input
 						type="text"
 						{...rest}
+						required={required}
 						{...register}
-						required
 						className={twMerge(`${textFieldClass} ${className}`)}
 					/>
 					<div
@@ -70,7 +71,7 @@ const FormInput = (props: FormInputProps) => {
 					type="text"
 					{...rest}
 					{...register}
-					required
+					required={required}
 					className={twMerge(`${textFieldClass} ${className}`)}
 				/>
 				<div

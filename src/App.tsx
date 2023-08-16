@@ -12,6 +12,7 @@ import { UserContext } from "@context";
 import { useLocalStorage } from "@hooks";
 import io from 'socket.io-client'
 import SocketProvider from "@shared/context/SocketContext.tsx";
+import { Toaster } from "react-hot-toast";
 
 
 const queryClient = new QueryClient();
@@ -50,6 +51,7 @@ function App() {
 							{/* TODO: remove the '!' after setting up login  */}
 							{(pathname !== "login" ) ? (
 								<DashboardLayout>
+									<Toaster/>
 									<RouterView />
 								</DashboardLayout>
 							) : (

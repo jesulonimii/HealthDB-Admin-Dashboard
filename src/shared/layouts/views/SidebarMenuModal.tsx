@@ -48,6 +48,12 @@ const SidebarMenuModal = ({className = "", show, setShow}) => {
 			icon: "Buy",
 			badge: 0,
 			link: "/pharmacy",
+		},
+		{
+			name: "News",
+			icon: "Edit",
+			badge: 0,
+			link: "/news",
 		}
 	];
 
