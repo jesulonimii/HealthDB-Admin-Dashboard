@@ -16,6 +16,8 @@ import IconStyled from "@ui/IconStyled.tsx";
 import { PencilIcon } from "@heroicons/react/24/outline";
 import PrescriptionCard from "@src/(dashboard)/appointments/views/PrescriptionCard.tsx";
 import { useAuth } from "@hooks";
+import { FinishAppointment } from "@shared/api/Appointments.api.ts";
+import { router } from "@shared/router";
 
 type AppointmentDataType = {
 	date_time: string;
@@ -83,6 +85,7 @@ const Appointments = () => {
 	const [query] = useSearchParams();
 	const appointment_id = query.get("id") ?? "";
 	const {userRole} = useAuth();
+	const [endAppointmentLoading, setEndAppointmentLoading] = useState(false)
 
 
 	const [appointmentData, setAppointmentData] = useState<AppointmentDataType>(defaultAppointmentData);
@@ -102,6 +105,18 @@ const Appointments = () => {
 			},
 		});
 
+		let endAppointment = () => {
+			setEndAppointmentLoading(true)
+			FinishAppointment(appointmentData, appointmentData.student_info?.user_id).then((res) => {
+				if (!res.error) {
+					//router.push("/appointments")
+					location.replace("/appointments")
+					setEndAppointmentLoading(false)
+				}
+			})
+		};
+		
+		
 		return (
 			<>
 				{status === "loading" ? (
@@ -131,7 +146,7 @@ const Appointments = () => {
 										</CustomButton>
 									</Link>
 
-									<CustomButton className="bg-status-error">End Appointment</CustomButton>
+									<CustomButton loading={endAppointmentLoading} onClick={endAppointment} className="bg-status-error">End Appointment</CustomButton>
 								</CardLayout>
 							</section>
 

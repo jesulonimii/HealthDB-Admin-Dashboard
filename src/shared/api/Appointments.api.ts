@@ -71,3 +71,19 @@ export const CreateDoctorReport = async ({ student_id, ...rest }: any) => {
 
 	return await callApi(config);
 };
+
+export const FinishAppointment = async (appointment_info: { date_time : string, appointment_id : string }, student_id: string) => {
+	const config = {
+		method: "post",
+		url: `${API_URL}/appointments/finish?user_id=${student_id}`,
+		headers: {
+			"Content-Type": "application/json",
+		},
+		data: {
+			date_time: appointment_info?.date_time,
+			appointment_id: appointment_info?.appointment_id,
+		},
+	};
+
+	return await callApi(config);
+};

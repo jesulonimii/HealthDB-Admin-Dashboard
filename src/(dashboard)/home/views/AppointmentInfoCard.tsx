@@ -53,7 +53,7 @@ function AppointmentInfoCard({ appointment_details, className }: appointmentCard
 	 const [pending, setPending] = useState(true)
 
 	return (
-		<Link to={`/appointments?id=${appointment_details.appointment_id}`} className={twMerge(`flex gap-4 cursor-pointer hover:bg-gray-50 p-3 border-b justify-between items-center ${className}`)}>
+		<a href={`/appointments?id=${appointment_details.appointment_id}`} className={twMerge(`flex gap-4 cursor-pointer hover:bg-gray-50 p-3 border-b justify-between items-center ${className}`)}>
 			<AvatarImage src={student_info?.personal_info?.profile_image} className="w-12 h-12" />
 
 			<div className="w-[50%] gap-1 justify-center flex flex-col">
@@ -70,7 +70,7 @@ function AppointmentInfoCard({ appointment_details, className }: appointmentCard
 					{moment(appointment_details.date_time).format("hh:mm a")}
 				</span>
 			</div>
-		</Link>
+		</a>
 	);
 }
 
